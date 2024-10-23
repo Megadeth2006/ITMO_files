@@ -7,7 +7,7 @@ import Pokemons.*;
 public class Main {
     public static void main(String[] args) {
         Battle b = new Battle();
-        List<Pokemon> pokemons = new ArrayList<>(List.of(new Fearow(), new Pichu(), new Pikachu(), new Raichu(), new Spearow(), new Victini()));
+        List<Pokemon> pokemons = new ArrayList<>(List.of(new Fearow("Гигачад", 1), new Pichu("Мелочь Пузатая", 1), new Pikachu("Мышь", 1), new Raichu("Ноунейм", 1), new Spearow("Сигма", 1), new Victini("Инопланетянин", 1)));
         Collections.shuffle(pokemons);
 
         for(Pokemon p : pokemons){

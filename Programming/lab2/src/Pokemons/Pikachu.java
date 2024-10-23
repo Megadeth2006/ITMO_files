@@ -1,13 +1,13 @@
 package Pokemons;
-import Moves.Physical.Facade;
-import Moves.Physical.FlareBlitz;
-import Moves.Special.Thunder;
+import Moves.Physical.*;
+import Moves.Status.*;
+import Moves.Special.*;
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 
 public class Pikachu extends Pokemon{
-    public Pikachu(){
-        super("Топ чел", 0 );
+    public Pikachu(String name, int level){
+        super(name, level);
         setStats(35, 55, 40, 50, 50, 90);
         setType(Type.ELECTRIC);
         setMove(new Facade(), new FlareBlitz(), new Thunder());

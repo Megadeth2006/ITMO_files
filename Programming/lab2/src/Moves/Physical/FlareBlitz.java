@@ -19,7 +19,7 @@ public class FlareBlitz extends PhysicalMove{
         if (0.1 >= Math.random()){
             Effect.burn(att);
             applySelfDamage(att, (double)1/3*calcBaseDamage(att, def));
-            System.out.print(att.toString() + " наносит атаку Flareblitz и испепеляет врага, теряя ХП = 1/3 power от своей атаки");
+            System.out.println(att.toString() + " наносит атаку Flareblitz и испепеляет врага, теряя ХП = 1/3 power от своей атаки");
         }
 
 

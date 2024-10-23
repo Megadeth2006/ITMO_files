@@ -14,7 +14,6 @@ public class Agility extends StatusMove{
 
     @Override
     protected void applyOppEffects(Pokemon pokemon) {
-        System.out.println(Stat.SPEED);
         pokemon.setMod(Stat.SPEED, (int) (pokemon.getStat(Stat.SPEED)+2));
     }
 }
