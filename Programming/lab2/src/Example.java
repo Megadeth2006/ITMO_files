@@ -1,7 +1,7 @@
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Battle;
 import Pokemons.Victini;
-public class Example2 {
+public class Example {
     public static void main(String[] args) {
         Battle b = new Battle();
         Pokemon p1 = new Pokemon("Чужой", 1);
