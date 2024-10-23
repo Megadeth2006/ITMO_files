@@ -19,11 +19,11 @@ public class Facade extends PhysicalMove {
     protected double calcBaseDamage(Pokemon att, Pokemon def) { // done
         Status Condition = att.getCondition();
         if (Condition == Status.BURN ||  Condition == Status.POISON || Condition == Status.PARALYZE){
-            System.out.println(att.toString() + " наносит атаку Facade с удвоенной силой");
+            System.out.print(att.toString() + " наносит атаку Facade с удвоенной силой");
             return 2*super.calcBaseDamage(att, def);
 
         }
-        System.out.println(att.toString() + " наносит атаку Facade");
+        System.out.print(att.toString() + " наносит атаку Facade");
         return super.calcBaseDamage(att, def);
     }
 }

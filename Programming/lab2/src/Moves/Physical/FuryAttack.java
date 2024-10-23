@@ -35,7 +35,7 @@ public class FuryAttack extends PhysicalMove{
             };
 
             for (int i = 1; i <= cnt; ++i){
-                pokemon.setMod(Stat.HP, (int) Math.round(v));
+                pokemon.setMod(Stat.HP, 15);
             }
         }
     }
