@@ -41,6 +41,10 @@ b.go();
 
 <image src="./optional_files/photos/pokemons.png" alt="Текст с описанием картинки">
 
+### Точка входа - Main.java
+### При необходимости код можно скомпилировать в jar архив, с помощью ```compile.sh``` скрипта в ```./optional_files```
+### Также в этой директории находится ```uml.png```, в котором графически отображено дерево классов и объектов.
+
 # Пример вывода моего кода:
 ```
 "C:\Program Files\Java\jdk-22\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.1\lib\idea_rt.jar=51956:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.1\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath "C:\Users\danie\OneDrive\Desktop\main folder\ITMO_files\Programming\lab2\out\production\lab2;C:\Users\danie\OneDrive\Desktop\main folder\ITMO_files\Programming\lab2\lib\Pokemon.jar" Main
