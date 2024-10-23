@@ -1,0 +1,75 @@
+"C:\Program Files\Java\jdk-22\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.1\lib\idea_rt.jar=51956:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.1\bin" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath "C:\Users\danie\OneDrive\Desktop\main folder\ITMO_files\Programming\lab2\out\production\lab2;C:\Users\danie\OneDrive\Desktop\main folder\ITMO_files\Programming\lab2\lib\Pokemon.jar" Main
+
+[1] Victini 
+[1] Pikachu 
+[1] Spearow 
+[1] Pichu 
+[1] Fearow 
+[1] Raichu 
+
+Pikachu Мышь из команды фиолетовых вступает в бой!
+Victini Инопланетянин из команды черных вступает в бой!
+Victini Инопланетянин делает Thunder и имеет 30% шанс парализовать цель. 
+Pikachu Мышь теряет 2 здоровья.
+
+Pikachu Мышь атакует. 
+Victini Инопланетянин теряет 4 здоровья.
+
+Victini Инопланетянин делает Thunder и имеет 30% шанс парализовать цель. 
+Pikachu Мышь теряет 2 здоровья.
+
+Pikachu Мышь делает Thunder и имеет 30% шанс парализовать цель. 
+Victini Инопланетянин теряет 10 здоровья.
+Victini Инопланетянин парализован
+Victini Инопланетянин теряет сознание.
+Spearow Сигма из команды черных вступает в бой!
+Pikachu Мышь атакует. 
+Pikachu Мышь наносит атаку Facade
+Spearow Сигма теряет 5 здоровья.
+
+Spearow Сигма промахивается
+
+Pikachu Мышь атакует. 
+Pikachu Мышь наносит атаку Facade
+Spearow Сигма теряет 4 здоровья.
+
+Spearow Сигма промахивается
+
+Pikachu Мышь делает Thunder и имеет 30% шанс парализовать цель. 
+Spearow Сигма теряет 20 здоровья.
+Spearow Сигма парализован
+Spearow Сигма теряет сознание.
+Fearow Гигачад из команды черных вступает в бой!
+Fearow Гигачад промахивается
+
+Pikachu Мышь атакует. 
+Fearow Гигачад теряет 4 здоровья.
+
+Fearow Гигачад наносит урон с повышенным коэффициентом критического удара DrillRun. 
+Pikachu Мышь теряет 1 здоровья.
+
+Pikachu Мышь атакует. 
+Fearow Гигачад теряет 4 здоровья.
+
+Fearow Гигачад делает FuryAttack. 
+Pikachu Мышь теряет 15 здоровья.
+Pikachu Мышь теряет 15 здоровья.
+Pikachu Мышь теряет сознание.
+Pichu Мелочь Пузатая из команды фиолетовых вступает в бой!
+Fearow Гигачад наносит урон с повышенным коэффициентом критического удара DrillRun. 
+Pichu Мелочь Пузатая теряет 1 здоровья.
+
+Pichu Мелочь Пузатая промахивается
+
+Fearow Гигачад промахивается
+
+Pichu Мелочь Пузатая делает Swagger. 
+Fearow Гигачад увеличивает атаку.
+
+Fearow Гигачад растерянно попадает по себе. 
+Fearow Гигачад теряет 5 здоровья.
+Fearow Гигачад теряет сознание.
+В команде черных не осталось покемонов.
+Команда фиолетовых побеждает в этом бою!
+
+Process finished with exit code 0
