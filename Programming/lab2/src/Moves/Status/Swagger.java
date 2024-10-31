@@ -2,6 +2,7 @@ package Moves.Status;
 import ru.ifmo.se.pokemon.*;
 //Swagger confuses the target and raises its Attack by two stages.
 //done
+// TODO:
 public class Swagger extends StatusMove {
     public Swagger(){
         super(Type.NORMAL, 0.0, 85.0);

@@ -11,6 +11,6 @@ public class Pichu extends Pokemon{
         super(name, level);
         setStats(20, 40, 15, 35, 35, 60);
         setType(Type.ELECTRIC);
-        setMove(new Confide(), new Swagger(), new Spark());
+        setMove(new Confide(), new Swagger());
     }
 }
