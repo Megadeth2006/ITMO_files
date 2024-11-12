@@ -1,0 +1,56 @@
+{
+	"user": {
+		"id": 12345,
+		"name": "Иван Иванов",
+		"email": "ivanov@example.com",
+		"is_active": true,
+		"roles": ["admin", "user"],
+		"preferences": {
+		"theme": "dark",
+		"notifications": true,
+		"language": "ru"
+		},
+		"profile": {
+			"age": 29,
+			"address": {
+			"street": "Ленина 10",
+			"city": "Москва",
+			"postal_code": "101000"
+			},
+			"social_links": {
+			"facebook": "https://facebook.com/ivanov",
+			"twitter": "https://twitter.com/ivanov"
+			}
+		}
+	},
+	"posts": [
+		{
+		"id": 1,
+		"title": "Заголовок поста 1",
+		"content": "Текст поста 1",
+		"created_at": "2024-10-01T10:00:00Z",
+		"tags": ["новости", "технологии"],
+		"comments": [
+		  {
+			"user": "Алексей",
+			"comment": "Отличный пост!",
+			"created_at": "2024-10-01T12:00:00Z"
+		  },
+		  {
+			"user": "Мария",
+			"comment": "Очень информативно, спасибо!",
+			"created_at": "2024-10-01T13:00:00Z"
+		  }
+		]
+	  },
+	  {
+		"id": 2,
+		"title": "Заголовок поста 2",
+		"content": "Текст поста 2",
+		"created_at": "2024-10-02T15:00:00Z",
+		"tags": ["спорт", "здоровье"],
+		"comments": []
+	  }
+	]
+  }
+  

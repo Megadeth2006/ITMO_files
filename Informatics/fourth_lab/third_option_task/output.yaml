@@ -1,0 +1,147 @@
+company:
+	name: Tech Innovations LLC
+	industry: Software Development
+	employees:
+		id: 1
+		name: Анна Смирнова
+		position: CEO
+		contact:
+		email: anna.smirnova@techinnovations.com
+		phone: +7 495 123-45-67
+		salary: 150000
+		hire_date: 2015-06-01T09:00:00Z
+		skills: leadership strategic planning business development
+		address:
+		street: ул. Техников 25
+		city: Москва
+		postal_code: 101000
+		performance:
+		reviews:
+			date: 2023-12-15
+			rating: 4.8
+			feedback: Отличный лидер, всегда находит правильные решения в сложных ситуациях.
+			date: 2022-12-15
+			rating: 4.6
+			feedback: Решительный и стратегический руководитель, иногда может быть слишком требовательна.
+		id: 2
+		name: Дмитрий Кузнецов
+		position: CTO
+		contact:
+		email: dmitriy.kuznetsov@techinnovations.com
+		phone: +7 495 234-56-78
+		salary: 130000
+		hire_date: 2016-03-15T09:00:00Z
+		skills: software architecture cloud computing AI project management
+		address:
+		street: ул. Инноваций 10
+		city: Санкт-Петербург
+		postal_code: 190000
+		performance:
+		reviews:
+			date: 2023-12-15
+			rating: 4.7
+			feedback: Прекрасный технический директор, который всегда в курсе последних технологий.
+			date: 2022-12-15
+			rating: 4.5
+			feedback: Отличные технические навыки, но иногда не хватает коммуникации с другими отделами.
+		id: 3
+		name: Марина Волкова
+		position: Project Manager
+		contact:
+		email: marina.volkova@techinnovations.com
+		phone: +7 495 345-67-89
+		salary: 90000
+		hire_date: 2018-07-01T09:00:00Z
+		skills: project management agile team coordination
+		address:
+		street: ул. Бизнес-центра 50
+		city: Екатеринбург
+		postal_code: 620000
+		performance:
+		reviews:
+			date: 2023-12-15
+			rating: 4.6
+			feedback: Отличная координация проектов, всегда следит за сроками и качеством.
+			date: 2022-12-15
+			rating: 4.3
+			feedback: Хорошая работа, но стоит немного улучшить навыки по управлению рисками.
+	projects:
+		id: 101
+		name: AI Chatbot Development
+		status: In Progress
+		deadline: 2024-12-31T00:00:00Z
+		team:
+			employee_id: 1
+			role: Project Lead
+			employee_id: 2
+			role: Technical Advisor
+			employee_id: 3
+			role: Project Manager
+		budget: 500000
+		tasks:
+			id: 1001
+			name: Define project scope
+			assigned_to: 3
+			due_date: 2024-02-28T00:00:00Z
+			status: Completed
+			id: 1002
+			name: Develop AI algorithms
+			assigned_to: 2
+			due_date: 2024-06-30T00:00:00Z
+			status: In Progress
+			id: 1003
+			name: User testing
+			assigned_to: 3
+			due_date: 2024-11-30T00:00:00Z
+			status: Pending
+		id: 102
+		name: Cloud Infrastructure Upgrade
+		status: Completed
+		deadline: 2024-06-30T00:00:00Z
+		team:
+			employee_id: 2
+			role: Project Lead
+		budget: 300000
+		tasks:
+			id: 2001
+			name: Setup cloud servers
+			assigned_to: 2
+			due_date: 2024-04-30T00:00:00Z
+			status: Completed
+			id: 2002
+			name: Migrate data
+			assigned_to: 2
+			due_date: 2024-06-30T00:00:00Z
+			status: Completed
+	clients:
+		id: 1
+		name: Alpha Corp
+		industry: E-commerce
+		contact:
+		email: contact@alphacorp.com
+		phone: +7 495 555-55-55
+		contracts:
+			id: 501
+			project_id: 101
+			signed_on: 2024-01-15T00:00:00Z
+			amount: 200000
+		id: 2
+		name: Beta Solutions
+		industry: Financial Services
+		contact:
+		email: info@betasolutions.com
+		phone: +7 495 666-66-66
+		contracts:
+			id: 502
+			project_id: 102
+			signed_on: 2024-03-01T00:00:00Z
+			amount: 150000
+financials:
+	annual_revenue: 5000000
+	expenses:
+	salaries: 2000000
+	office_rent: 500000
+	marketing: 300000
+	research_and_development: 1000000
+	miscellaneous: 500000
+	net_profit: 1000000
