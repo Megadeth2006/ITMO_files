@@ -1,45 +1,49 @@
-
-user:
-  id: 12345.0
-  name: "Иван Иванов"
-  email: "ivanov@example.com"
-  is_active: True
-  roles:
-  -  "admin"
-  -  "user"
-  preferences:
-    theme: "dark"
-    notifications: True
-    language: "ru"
-  profile:
-    age: 29.0
-    address:
-      street: "Ленина 10"
-      city: "Москва"
-      postal_code: "101000"
-    social_links:
-      facebook: "https://facebook.com/ivanov"
-      twitter: "https://twitter.com/ivanov"
-posts:
-- id: 1.0
-  title: "Заголовок поста 1"
-  content: "Текст поста 1"
-  created_at: "2024-10-01T10:00:00Z"
-  tags:
-  -  "новости"
-  -  "технологии"
-  comments:
-  - user: "Алексей"
-    comment: "Отличный пост!"
-    created_at: "2024-10-01T12:00:00Z"
-  - user: "Мария"
-    comment: "Очень информативно, спасибо!"
-    created_at: "2024-10-01T13:00:00Z"
-- id: 2.0
-  title: "Заголовок поста 2"
-  content: "Текст поста 2"
-  created_at: "2024-10-02T15:00:00Z"
-  tags:
-  -  "спорт"
-  -  "здоровье"
-  comments:
+schedule:
+  first_day:
+    date: "Monday, 11 Nov 2024"
+    lessons:
+      first_lesson:
+        subject: "Линейная алгебра (продвинутый уровень)"
+        lecturer: "Карпов Дмитрий Валерьевич"
+        room: "Ауд. 1404"
+        place: "Кронверкский пр., д.49, лит.А"
+        time: "15:20-16:50"
+      second_lesson:
+        subject: "Линейная алгебра (продвинутый уровень)"
+        lecturer: "Покидова Марина Владимировна"
+        room: "Ауд. 2426"
+        place: "Кронверкский пр., д.49, лит.А"
+        time: "17:00-18:30"
+      third_lesson:
+        subject: "Линейная алгебра (продвинутый уровень)"
+        lecturer: "Карпов Дмитрий Валерьевич"
+        room: "Ауд. 1404"
+        place: "Кронверкский пр., д.49, лит.А"
+        time: "18:40-20:10"
+  second_day:
+    date: "Saturday 17 Nov 2024"
+    lessons:
+      first_lesson:
+        subject: "Математический анализ (продвинутый уровень)"
+        lecturer: "Холодова Светлана Евгеньевна"
+        room: "Ауд. 1405"
+        place: "Кронверкский пр., д.49, лит.А"
+        time: "08:20-09:50"
+      second_lesson:
+        subject: "Специальные разделы математического анализа"
+        lecturer: "Холодова Светлана Евгеньевна"
+        room: "Ауд. 1405"
+        place: "Кронверкский пр., д.49, лит.А"
+        time: "10:00-11:30"
+      third_lesson:
+        subject: "Информатика"
+        lecturer: "В.В. Пономарев"
+        room: "Ауд. 1328"
+        place: "Кронверкский пр., д.49, лит.А"
+        time: "13:30-15:00"
+      fourth_lesson:
+        subject: "Информатика"
+        lecturer: "В.В. Пономарев"
+        room: "Ауд. 1328"
+        place: "Кронверкский пр., д.49, лит.А"
+        time: "15:20-16:50"

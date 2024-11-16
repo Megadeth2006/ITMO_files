@@ -1,5 +1,5 @@
 def parse_input_file():
-    file = open("Informatics/fourth_lab/main_task/input.json", "r", encoding="utf-8")
+    file = open("C:/Users/danie/OneDrive/Desktop/main folder/ITMO_files/Informatics/fourth_lab/main_task/input.json", "r", encoding="utf-8")
     yaml_data = file.read()
         # Заменяем метасимволы для приведения json к yaml формату
     yaml_data = yaml_data.replace('",', "").replace('},', "").replace('"', "")
@@ -8,7 +8,7 @@ def parse_input_file():
     
 
     lines = yaml_data.split("\n") # список строк, с которым будем работать
-    print(lines)
+    # print(lines)
     yaml_lines = [] # результирующий список строк
     first = -1
     for line in lines:
@@ -19,9 +19,7 @@ def parse_input_file():
         indent_level = line.find(line.strip())  # находим уровень отступа путем нахождения индекса первой встречи ключа в строке line
         yaml_lines.append("  " * (indent_level-first) + line.strip().strip("\t"))
         
-    # for i in yaml_lines:
-    #     print(i)
-    output_file = open("Informatics/fourth_lab/main_task/output.yaml", "w", encoding="utf-8")
+    output_file = open("C:/Users/danie/OneDrive/Desktop/main folder/ITMO_files/Informatics/fourth_lab/main_task/output.yaml", "w", encoding="utf-8")
     output_file.write("\n".join(yaml_lines))
     output_file.close()
                 
@@ -31,5 +29,6 @@ def parse_input_file():
 
 def main():
     parse_input_file()
+    
 if __name__ == "__main__":
     main()
