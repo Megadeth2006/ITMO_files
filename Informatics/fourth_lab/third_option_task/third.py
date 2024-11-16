@@ -146,9 +146,8 @@ def json_to_yaml(data, indent = 0, tire = 0): # конвертер json в yaml
     
     
 
-# Чтение JSON-файла, разбор и преобразование в YAML
 def main():
-    with open("Informatics/fourth_lab/third_option_task/example0.json", "r", encoding="UTF-8") as file:
+    with open("C:/Users/danie/OneDrive/Desktop/main folder/ITMO_files/Informatics/fourth_lab/third_option_task/example0.json", "r", encoding="UTF-8") as file:
         json_text = file.read()
     parser = JSONParser(json_text)
     parsed_data = parser.parse()
@@ -156,7 +155,7 @@ def main():
     yaml_output = yaml_output.lstrip("\n")
     with open("C:/Users/danie/OneDrive/Desktop/main folder/ITMO_files/Informatics/fourth_lab/third_option_task/output.yaml", "w", encoding = "UTF-8") as file:
         file.write(yaml_output)
-    print("JSON успешно конвертирован в YAML и сохранён в 'output.yaml'.")
+   
 
 
 if __name__ == "__main__":
