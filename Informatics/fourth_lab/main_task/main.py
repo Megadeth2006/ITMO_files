@@ -8,7 +8,7 @@ def parse_input_file():
     
 
     lines = yaml_data.split("\n") # список строк, с которым будем работать
-    # print(lines)
+
     yaml_lines = [] # результирующий список строк
     first = -1
     for line in lines:
