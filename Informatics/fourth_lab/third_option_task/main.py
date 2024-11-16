@@ -26,7 +26,7 @@ class JSONParser: # парсер json формата из строки: стро
         elif self.text[self.index:self.index+5].lower() == "false":
             self.index += 5
             return False
-        elif self.text[self.index:self.index+4].lower() == "none":
+        elif self.text[self.index:self.index+4].lower() == "null":
             self.index += 4
             return None
         else:
