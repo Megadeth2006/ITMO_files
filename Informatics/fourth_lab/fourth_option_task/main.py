@@ -29,6 +29,7 @@ def main_task():
   
     output_file.write("\n".join(yaml_lines))
     output_file.close()
+    
                 
 
 def first_option():
@@ -233,25 +234,25 @@ if __name__ == "__main__":
     for i in range(100):
         main_task()
     end_time = time.time()
-    print(f"Время выполнения:{end_time-start_time:.6f} секунд")
+    print(f"Время выполнения файла основного задания:{end_time-start_time:.6f} секунд")
     
     start_time = time.time()
     for i in range(100):
         first_option()
     end_time = time.time()
-    print(f"Время выполнения:{end_time-start_time:.6f} секунд")
+    print(f"Время выполнения файла доп задачи 1: {end_time-start_time:.6f} секунд")
     
     start_time = time.time()
     for i in range(100):
         second_option()
     end_time = time.time()
-    print(f"Время выполнения:{end_time-start_time:.6f} секунд")
+    print(f"Время выполнения доп задачи 2: {end_time-start_time:.6f} секунд")
     
     start_time = time.time()
     for i in range(100):
         third_option_task()
     end_time = time.time()
-    print(f"Время выполнения:{end_time-start_time:.6f} секунд") 
+    print(f"Время выполнения доп задачи 3: {end_time-start_time:.6f} секунд") 
     
     
     
