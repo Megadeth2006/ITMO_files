@@ -1,0 +1,70 @@
+user:
+  id: 12345.32423
+  name: "Иван Иванов"
+  email: "ivanov@example.com"
+  is_active: True
+  roles:
+  -  0
+  -  1
+  -  2
+  -  3
+  -  4
+  -  5
+  -  6
+  -  7
+  -  8
+  -  9
+  -  10
+  -  11
+  -  12
+  -  13
+  -  14
+  -  15
+  -  16
+  -  17
+  -  18
+  -  19
+  -  20
+  -  21
+  -  22
+  -  23
+  -  24
+  -  25
+  -  26
+  -  27
+  -  28
+  -  29
+  preferences:
+    theme: "dark"
+    notifications: True
+    language: "ru"
+  profile:
+    age: 29
+    address:
+      street: "Ленина 10"
+      city: "Москва"
+      postal_code: "101000"
+    social_links:
+      facebook: "https://facebook.com/ivanov"
+      twitter: "https://twitter.com/ivanov"
+posts:
+- id: 1
+  title: "Заголовок поста 1"
+  content: "Текст поста 1"
+  created_at: "2024-10-01T10:00:00Z"
+  tags:
+  comments:
+  - user: "Алексей"
+    comment: "Отличный пост!"
+    created_at: "2024-10-01T12:00:00Z"
+  - user: "Мария"
+    comment: "Очень информативно, спасибо!"
+    created_at: "2024-10-01T13:00:00Z"
+- id: 2
+  title: "Заголовок поста 2"
+  content: "Текст поста 2"
+  created_at: "2024-10-02T15:00:00Z"
+  tags:
+  -  "спорт"
+  -  "здоровье"
+  comments:

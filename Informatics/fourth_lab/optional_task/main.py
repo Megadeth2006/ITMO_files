@@ -1,12 +1,69 @@
+import re
+import json
+def process_match(match):
+    # Получаем максимальное число (диапазон) из выражения
+    n = int(match.group(1))
+    
+    # Генерация списка по найденному диапазону
+    data = [{"cl": {"cl1": {"cl2": {"cl3": {"cln": i}}}}}} for i in range(n)]
+    
+    # Преобразуем Python-объект в строку JSON с отступами
+    return json.dumps(data, indent=2)
 class JSONParser: # парсер json формата из строки: строка -> json
     def __init__(self, text):
         self.text = text
         self.index = 0
+        
+    #####   добавил замену
+    def replacer_array(match):
+        end = match.group(0)
+        rng = ""
+        for x in range(0, len(end)):
+            if end[x] == "(":
+                for y in range(x+1, len(end)):
+                    if end[y] != ")":
+                        rng += end[y]
+                    else:
+                        break
+        rng = int(rng)
 
+        return f"{', '.join(map(str, range(rng)))}"
+    def replacer_dict(match):
+        end = match.group(0)
+        print(end)
+        
+        # rng = ""
+        # for x in range(0, len(end)):
+        #     if end[x] == "(":
+        #         for y in range(x+1, len(end)):
+        #             if end[y] != ")":
+        #                 rng += end[y]
+        #             else:
+        #                 break
+        # rng = int(rng)
+        # 
+        # return formatted_json.replace("\n", "")
+    ####
+    
     def parse(self): #старт парсинга: пропускаем пробелы -> обрабатываем не пробельный символ -> пропускаем пробелы -> возвращаем json
         self.skip_whitespace()
+        # self.text = self.text.replace("i for i in range(10)", "")
+        pattern = r'\{.*?for i in list\(range\((\d+)\)\)\}'
+        matches = re.findall(pattern, self.text)
+        output_str = self.text
+        
+        self.text = re.sub(r"[a-z]+\s+for\s+[a-z]+\s+in\s+range\([0-9]+\)", JSONParser.replacer_array, self.text)
+        # self.text = re.sub(r"{\"[a-z]+\"\:[a-z]+}\s+for\s+[a-z]\s+in\s+range\([0-9]+\)", JSONParser.replacer_dict, self.text)
+        self.text = re.sub(r"{\"[a-z]+\"\:[a-z]+}\s+for\s+[a-z]\s+in\s+range\([0-9]+\)", "", self.text)
+        for match in matches:
+        
+        # output_str = re.sub(r'\{.*?for i in list\(range\(' + match + r'\)\)\}', process_match, output_str)
+
+           
         value = self.parse_value()
         self.skip_whitespace()
+        
+        
         return value
 
     def parse_value(self): # обрабатываем не пробельный символ (если пробел, то пропускаем и работаем с не пробельным символом)
@@ -30,8 +87,9 @@ class JSONParser: # парсер json формата из строки: стро
             self.index += 4
             return None
         else:
+            
             print("Че ты сюда вписал вообще, кроме цифр/чисел/строк/словарей/списков/true/false/none ничего не принимается")
-
+            quit(0)
     def parse_object(self): # работаем с объектом (словарь)
         obj = {}
         self.index += 1  # Skip '{'
@@ -58,6 +116,7 @@ class JSONParser: # парсер json формата из строки: стро
         arr = []
         self.index += 1  # Skip '['
         self.skip_whitespace()
+        
         while self.current_char() != ']':
             value = self.parse_value()
             arr.append(value)
@@ -69,6 +128,7 @@ class JSONParser: # парсер json формата из строки: стро
                 print("Переделывай свой json, он выполнен не по формату: нужны , или ]")
                 
         self.index += 1  # Скипаем ']'
+        # print(arr)
         return arr
 
     def parse_string(self): # работаем со строкой
@@ -99,7 +159,11 @@ class JSONParser: # парсер json формата из строки: стро
                 self.index += 1
             while self.current_char().isdigit():
                 self.index += 1
-        return float(self.text[start:self.index])
+        if self.text[start:self.index].count(".") != 0:
+            
+            return float(self.text[start:self.index])
+        else:
+            return int(self.text[start:self.index])
 
     def current_char(self): # текущий символ 
         if self.index < len(self.text):
@@ -147,13 +211,13 @@ def json_to_yaml(data, indent = 0, tire = 0): # конвертер json в yaml
     
 
 def main():
-    input_file = open("C:/Users/danie/OneDrive/Desktop/main folder/ITMO_files/Informatics/fourth_lab/third_option_task/example2.json", "r", encoding="UTF-8")
+    input_file = open("C:/Users/danie/OneDrive/Desktop/main folder/ITMO_files/Informatics/fourth_lab/optional_task/input.json", "r", encoding="UTF-8")
     json_text = input_file.read()
     parser = JSONParser(json_text)
     parsed_data = parser.parse()
     yaml_output = json_to_yaml(parsed_data)
     yaml_output = yaml_output.lstrip("\n")
-    output_file = open("C:/Users/danie/OneDrive/Desktop/main folder/ITMO_files/Informatics/fourth_lab/third_option_task/output.yaml", "w", encoding = "UTF-8")
+    output_file = open("C:/Users/danie/OneDrive/Desktop/main folder/ITMO_files/Informatics/fourth_lab/optional_task/output.yaml", "w", encoding = "UTF-8")
     output_file.write(yaml_output)
    
 
