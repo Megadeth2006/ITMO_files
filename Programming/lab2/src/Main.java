@@ -1,8 +1,4 @@
 import ru.ifmo.se.pokemon.Battle;
-import ru.ifmo.se.pokemon.Pokemon;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Collections;
 import Pokemons.*;
 public class Main {
     public static void main(String[] args) {
