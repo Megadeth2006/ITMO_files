@@ -12,6 +12,7 @@ If the first hit breaks a Substitute, the second hit will deal damage to the tar
 The move Counter only counters the final hit, but Bide counters the complete damage.
 
 The Skill Link ability will cause Fury Attack to always hit the maximum number of times.*/
+
 public class FuryAttack extends PhysicalMove{
     public FuryAttack(){
         super(Type.NORMAL, 15.0, 85.0);
@@ -24,15 +25,17 @@ public class FuryAttack extends PhysicalMove{
 
         @Override
         protected void applyOppDamage(Pokemon pokemon, double v) {
+
+
             int chance = (int)(Math.random()/0.125);
-            int cnt = 0;
+            int cnt ;
             switch (chance){
                 case 0, 1, 2 -> cnt = 2;
                 case 3, 4, 5 -> cnt = 3;
                 case 6 -> cnt = 4;
                 case 7 -> cnt = 5;
                 default -> throw new IllegalArgumentException("Unexpected value: " + chance);
-            };
+            }
 
             for (int i = 1; i <= cnt; ++i){
                 pokemon.setMod(Stat.HP, 15);
