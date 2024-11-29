@@ -231,25 +231,25 @@ if __name__ == "__main__":
     
     
     start_time = time.time()
-    for i in range(100):
+    for i in range(10000):
         main_task()
     end_time = time.time()
     print(f"Время выполнения файла основного задания:{end_time-start_time:.6f} секунд")
     
     start_time = time.time()
-    for i in range(100):
+    for i in range(10000):
         first_option()
     end_time = time.time()
     print(f"Время выполнения файла доп задачи 1: {end_time-start_time:.6f} секунд")
     
     start_time = time.time()
-    for i in range(100):
+    for i in range(10000):
         second_option()
     end_time = time.time()
     print(f"Время выполнения доп задачи 2: {end_time-start_time:.6f} секунд")
     
     start_time = time.time()
-    for i in range(100):
+    for i in range(10000):
         third_option_task()
     end_time = time.time()
     print(f"Время выполнения доп задачи 3: {end_time-start_time:.6f} секунд") 
