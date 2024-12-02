@@ -1,0 +1,1 @@
+print(eval('[i for i in range(30)]'))

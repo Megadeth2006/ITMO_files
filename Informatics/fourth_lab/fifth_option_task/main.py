@@ -113,9 +113,9 @@ class JSONParser: # парсер json формата из строки: стро
 def json_to_csv(schedule_dict, indent = 0, tire = 0): # конвертер json в csv
     schedule = schedule_dict.get('schedule', {})
     
-    # Создаем список строк для CSV
+
     csv_lines = []
-    # Заголовки
+
     headers = ['Date', 'Time', 'Subject', 'Lecturer', 'Room', 'Place']
     csv_lines.append(','.join(headers))
     

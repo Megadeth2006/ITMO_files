@@ -41,7 +41,91 @@ user:
   profile:
     age: 29
     address:
-      street: "Ленина 10"
+      street:
+      - cl:
+          k:
+            add:
+              abb: 0
+      - cl:
+          k:
+            add:
+              abb: 1
+      - cl:
+          k:
+            add:
+              abb: 2
+      - cl:
+          k:
+            add:
+              abb: 3
+      - cl:
+          k:
+            add:
+              abb: 4
+      - cl:
+          k:
+            add:
+              abb: 5
+      - cl:
+          k:
+            add:
+              abb: 6
+      - cl:
+          k:
+            add:
+              abb: 7
+      - cl:
+          k:
+            add:
+              abb: 8
+      - cl:
+          k:
+            add:
+              abb: 9
+      - cl:
+          k:
+            add:
+              abb: 10
+      - cl:
+          k:
+            add:
+              abb: 11
+      - cl:
+          k:
+            add:
+              abb: 12
+      - cl:
+          k:
+            add:
+              abb: 13
+      - cl:
+          k:
+            add:
+              abb: 14
+      - cl:
+          k:
+            add:
+              abb: 15
+      - cl:
+          k:
+            add:
+              abb: 16
+      - cl:
+          k:
+            add:
+              abb: 17
+      - cl:
+          k:
+            add:
+              abb: 18
+      - cl:
+          k:
+            add:
+              abb: 19
+      - cl:
+          k:
+            add:
+              abb: 20
       city: "Москва"
       postal_code: "101000"
     social_links:
@@ -52,7 +136,113 @@ posts:
   title: "Заголовок поста 1"
   content: "Текст поста 1"
   created_at: "2024-10-01T10:00:00Z"
+  tags1:
+  - cl:
+      k:
+        l: 0
+  - cl:
+      k:
+        l: 1
+  - cl:
+      k:
+        l: 2
+  - cl:
+      k:
+        l: 3
+  - cl:
+      k:
+        l: 4
+  - cl:
+      k:
+        l: 5
+  - cl:
+      k:
+        l: 6
+  - cl:
+      k:
+        l: 7
+  - cl:
+      k:
+        l: 8
+  - cl:
+      k:
+        l: 9
+  - cl:
+      k:
+        l: 10
+  - cl:
+      k:
+        l: 11
+  - cl:
+      k:
+        l: 12
+  - cl:
+      k:
+        l: 13
+  - cl:
+      k:
+        l: 14
+  - cl:
+      k:
+        l: 15
+  - cl:
+      k:
+        l: 16
+  - cl:
+      k:
+        l: 17
+  - cl:
+      k:
+        l: 18
+  - cl:
+      k:
+        l: 19
+  - cl:
+      k:
+        l: 20
   tags:
+  - cl:
+      k: 0
+  - cl:
+      k: 1
+  - cl:
+      k: 2
+  - cl:
+      k: 3
+  - cl:
+      k: 4
+  - cl:
+      k: 5
+  - cl:
+      k: 6
+  - cl:
+      k: 7
+  - cl:
+      k: 8
+  - cl:
+      k: 9
+  - cl:
+      k: 10
+  - cl:
+      k: 11
+  - cl:
+      k: 12
+  - cl:
+      k: 13
+  - cl:
+      k: 14
+  - cl:
+      k: 15
+  - cl:
+      k: 16
+  - cl:
+      k: 17
+  - cl:
+      k: 18
+  - cl:
+      k: 19
+  - cl:
+      k: 20
   comments:
   - user: "Алексей"
     comment: "Отличный пост!"

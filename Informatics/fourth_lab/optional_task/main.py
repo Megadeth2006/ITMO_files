@@ -1,69 +1,26 @@
 import re
 import json
-def process_match(match):
-    # Получаем максимальное число (диапазон) из выражения
-    n = int(match.group(1))
-    
-    # Генерация списка по найденному диапазону
-    data = [{"cl": {"cl1": {"cl2": {"cl3": {"cln": i}}}}}} for i in range(n)]
-    
-    # Преобразуем Python-объект в строку JSON с отступами
-    return json.dumps(data, indent=2)
+
 class JSONParser: # парсер json формата из строки: строка -> json
     def __init__(self, text):
         self.text = text
         self.index = 0
-        
     #####   добавил замену
-    def replacer_array(match):
+    def replacer(match):
         end = match.group(0)
         rng = ""
-        for x in range(0, len(end)):
-            if end[x] == "(":
-                for y in range(x+1, len(end)):
-                    if end[y] != ")":
-                        rng += end[y]
-                    else:
-                        break
-        rng = int(rng)
-
-        return f"{', '.join(map(str, range(rng)))}"
-    def replacer_dict(match):
-        end = match.group(0)
-        print(end)
+        lst = []
+        try:
+            lst = eval(end)
+            return str(lst).replace("'", '"')
+        except:
+            return end + " - Неверный вид"
         
-        # rng = ""
-        # for x in range(0, len(end)):
-        #     if end[x] == "(":
-        #         for y in range(x+1, len(end)):
-        #             if end[y] != ")":
-        #                 rng += end[y]
-        #             else:
-        #                 break
-        # rng = int(rng)
-        # 
-        # return formatted_json.replace("\n", "")
-    ####
-    
     def parse(self): #старт парсинга: пропускаем пробелы -> обрабатываем не пробельный символ -> пропускаем пробелы -> возвращаем json
-        self.skip_whitespace()
-        # self.text = self.text.replace("i for i in range(10)", "")
-        pattern = r'\{.*?for i in list\(range\((\d+)\)\)\}'
-        matches = re.findall(pattern, self.text)
-        output_str = self.text
-        
-        self.text = re.sub(r"[a-z]+\s+for\s+[a-z]+\s+in\s+range\([0-9]+\)", JSONParser.replacer_array, self.text)
-        # self.text = re.sub(r"{\"[a-z]+\"\:[a-z]+}\s+for\s+[a-z]\s+in\s+range\([0-9]+\)", JSONParser.replacer_dict, self.text)
-        self.text = re.sub(r"{\"[a-z]+\"\:[a-z]+}\s+for\s+[a-z]\s+in\s+range\([0-9]+\)", "", self.text)
-        for match in matches:
-        
-        # output_str = re.sub(r'\{.*?for i in list\(range\(' + match + r'\)\)\}', process_match, output_str)
-
-           
+        self.skip_whitespace()      
+        self.text = re.sub(r"\[.*range.*\]", JSONParser.replacer, self.text)      
         value = self.parse_value()
-        self.skip_whitespace()
-        
-        
+        self.skip_whitespace() 
         return value
 
     def parse_value(self): # обрабатываем не пробельный символ (если пробел, то пропускаем и работаем с не пробельным символом)

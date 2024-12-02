@@ -4,7 +4,7 @@
 		"name": "Иван Иванов",
 		"email": "ivanov@example.com",
 		"is_active": true,
-		"roles": [i for   i   in    range(30)],
+		"roles": [i    for i    in      range(30)],
 		"preferences": {
 		"theme": "dark",
 		"notifications": true,
@@ -13,7 +13,7 @@
 		"profile": {
 			"age": 29,
 			"address": {
-			"street": "Ленина 10",
+			"street": [{"cl":{"k":{"add": {"abb": i}}}} for i in range(21)],
 			"city": "Москва",
 			"postal_code": "101000"
 			},
