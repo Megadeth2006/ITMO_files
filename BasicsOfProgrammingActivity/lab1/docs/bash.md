@@ -1,6 +1,5 @@
 # Bash
 + [Документация по procfs /proc](procfs_UNIX.md)
-+ [Ответы на вопросы](answers.md)
 ## Переменные:
 ```bash
 name="John"        # Присвоить значение
