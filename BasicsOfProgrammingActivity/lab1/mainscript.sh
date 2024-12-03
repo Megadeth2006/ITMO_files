@@ -64,21 +64,22 @@ chmod 355 ./machop5/bellossom
 cat cubchoo6/hypno blitzle4/kingdra > eelektross6_95
 ln -s eelektross6_95 cubchoo6/scraftyeelektross
 cp eelektross6 machop5/bellossom
-sudo cat donphan5 > cubchoo6/samurottdomphan
+cat donphan5 > cubchoo6/samurottdomphan
 ln -s cubchoo6/ Copy_16
 ln lickilicky3 cubchoo6/vullabylicklicky
-sudo cp -r blitzle4/ machop5/bellossom
+cp -r blitzle4/ machop5/bellossom
 
 # 4 task
 
+mddir tmp
 # 1 ex:
 find . -type f -exec wc -l {} + 2>/dev/null | sort -n
 
 # 2 ex:
-sudo ls blitzle4/ | sort -r | 2>/tmp/file.txt
+ls blitzle4/ 2>tmp/file.txt | sort -r # пофиксил вывод ошибок в файл
 
 # 3 ex:
-sudo ls blitzle4/ | sort -r | 2>tmp/file.txt
+ls blitzle4/ 2>tmp/file.txt | sort -r # пофиксил вывод ошибок в файл
 
 # 4 ex:
 ls -r1 | sort
