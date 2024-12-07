@@ -45,87 +45,108 @@ user:
       - cl:
           k:
             add:
-              abb: 0
+              abb:
+                23423: 0
       - cl:
           k:
             add:
-              abb: 1
+              abb:
+                23423: 1
       - cl:
           k:
             add:
-              abb: 2
+              abb:
+                23423: 2
       - cl:
           k:
             add:
-              abb: 3
+              abb:
+                23423: 3
       - cl:
           k:
             add:
-              abb: 4
+              abb:
+                23423: 4
       - cl:
           k:
             add:
-              abb: 5
+              abb:
+                23423: 5
       - cl:
           k:
             add:
-              abb: 6
+              abb:
+                23423: 6
       - cl:
           k:
             add:
-              abb: 7
+              abb:
+                23423: 7
       - cl:
           k:
             add:
-              abb: 8
+              abb:
+                23423: 8
       - cl:
           k:
             add:
-              abb: 9
+              abb:
+                23423: 9
       - cl:
           k:
             add:
-              abb: 10
+              abb:
+                23423: 10
       - cl:
           k:
             add:
-              abb: 11
+              abb:
+                23423: 11
       - cl:
           k:
             add:
-              abb: 12
+              abb:
+                23423: 12
       - cl:
           k:
             add:
-              abb: 13
+              abb:
+                23423: 13
       - cl:
           k:
             add:
-              abb: 14
+              abb:
+                23423: 14
       - cl:
           k:
             add:
-              abb: 15
+              abb:
+                23423: 15
       - cl:
           k:
             add:
-              abb: 16
+              abb:
+                23423: 16
       - cl:
           k:
             add:
-              abb: 17
+              abb:
+                23423: 17
       - cl:
           k:
             add:
-              abb: 18
+              abb:
+                23423: 18
       - cl:
           k:
             add:
-              abb: 19
+              abb:
+                23423: 19
       - cl:
           k:
             add:
-              abb: 20
+              abb:
+                23423: 20
       city: "Москва"
       postal_code: "101000"
     social_links:
