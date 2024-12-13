@@ -77,8 +77,25 @@
 
 #move(dx: -10mm, dy: -54mm, text(size: 13pt, "любые две вместе длиннее третьей, составить треугольник."))
 
-#move(dx: -26mm, dy: -52mm, image("3.png", width: 108mm))
 
-#move(dx: -26mm, dy: -52mm, image("4.png", width: 112mm))
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#move(dx: -26mm, dy: -52mm, image("3.png", width: 101mm))
+
+#move(dx: -26mm, dy: -52mm, image("4.png", width: 109mm))
 
