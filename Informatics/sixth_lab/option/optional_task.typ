@@ -78,6 +78,17 @@
 #move(dx: -10mm, dy: -54mm, text(size: 13pt, "любые две вместе длиннее третьей, составить треугольник."))
 
 
+#move(dx: -19.6mm, dy: -48mm, text(size: 13pt, "Предположим"))
+
+#line(stroke: (paint: rgb(black)), start: (12mm, -54mm), end: (25mm, -54mm))
+
+#move(dx: 28mm, dy: -61mm, text(size: 17pt, "="))
+
+#move(dx: 11mm, dy: -70mm, text(size: 7pt, "A                   B"))
+
+#line(stroke: (dash: "dashed", paint: rgb(black)), start: (34mm, -73mm), end: (47mm, -73mm))
+
+#move(dx: 50mm, dy: -80mm, text(size: 13pt, "(пр I.3)."))
 
 
 
@@ -95,7 +106,7 @@
 
 
 
-#move(dx: -26mm, dy: -52mm, image("3.png", width: 101mm))
+#move(dx: -26mm, dy: -79mm, image("3.png", width: 101mm))
 
-#move(dx: -26mm, dy: -52mm, image("4.png", width: 109mm))
+#move(dx: -26mm, dy: -77mm, image("4.png", width: 109mm))
 
