@@ -12,7 +12,7 @@ public class ChapterForm extends Form<Chapter> {
 
     @Override
     public Chapter build() {
-        return new Chapter(askString("Chapter.name", "", s -> !s.isEmpty()),
-                askString("Chapter.parentlegion", "", s -> !s.isEmpty()));
+        return new Chapter(askString("Chapter.name", "(Поле не может быть null, Строка не может быть пустой)", s -> !s.isEmpty()),
+                askString("Chapter.parentlegion", "", s -> true));
     }
 }

@@ -4,19 +4,19 @@ package Manager;
 
 public class IdManager {
     private static int id = 1;
-    private static CollectionManager collectionManager;
+    private static CollectionManager collection;
 
     private IdManager(){
 
     }
-    public static void setCollectionManager(CollectionManager collectionManager){
-        IdManager.collectionManager = collectionManager;
+    public static void setCollectionManager(CollectionManager collection){
+        IdManager.collection = collection;
     }
     public static int generateId(){
-        if (collectionManager == null){
+        if (collection == null){
             throw new NullPointerException("CollectionManager не инициализован");
         }
-        while (collectionManager.findById(id) != null){
+        while (collection.findById(id) != null){
             id++;
 
         }

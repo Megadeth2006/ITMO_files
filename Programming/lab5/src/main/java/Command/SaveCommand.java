@@ -6,23 +6,25 @@ import Manager.JsonManager;
 
 import java.io.FileNotFoundException;
 
-// TODO: написать логику
+
 public class SaveCommand implements CommandInterface{
     ConsoleManager console;
-    CollectionManager collectionManager;
     JsonManager jsonManager;
 
-    public SaveCommand(ConsoleManager console, CollectionManager collectionManager,JsonManager jsonManager){
+    public SaveCommand(ConsoleManager console,JsonManager jsonManager){
         this.console = console;
-        this.collectionManager = collectionManager;
         this.jsonManager = jsonManager;
     }
 
 
     @Override
     public int execute(String[] args) {
+        if (args.length != 0){
+            console.printErr("Команда не принимает аргументы");
+            return 2;
+        }
         try{
-            jsonManager.writeCollection(collectionManager.getCollection());
+            jsonManager.writeCollection();
             return 0;
         }
         catch (FileNotFoundException e){
@@ -31,4 +33,5 @@ public class SaveCommand implements CommandInterface{
         }
 
     }
+
 }

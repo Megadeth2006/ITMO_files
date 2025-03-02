@@ -2,11 +2,11 @@ package Manager;
 
 import Model.MeleeWeapon;
 import Model.SpaceMarine;
-// TODO: нужно дописать код
+
 public class ValidationManager {
     private ValidationManager(){}
-    public static boolean isValidSpaceMarine(SpaceMarine object, CollectionManager collectionManager){
-        return object.getId() > 0 && collectionManager.findById(object.getId()) == null && object.getName() != null;
+    public static boolean isValidSpaceMarine(SpaceMarine object, CollectionManager collection){
+        return object.getId() > 0 && collection.findById(object.getId()) == null && object.getName() != null;
     }
 
     public static boolean isValidCoordinates(SpaceMarine object){

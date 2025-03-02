@@ -6,13 +6,13 @@ import Model.SpaceMarine;
 import Model.form.SpaceMarineForm;
 
 
-// TODO: написать логику
+
 public class AddCommand implements CommandInterface {
     ConsoleManager console;
-    CollectionManager collectionManager;
-    public AddCommand(ConsoleManager console, CollectionManager collectionManager){
+    CollectionManager collection;
+    public AddCommand(ConsoleManager console, CollectionManager collection){
         this.console = console;
-        this.collectionManager = collectionManager;
+        this.collection = collection;
     }
 
     @Override
@@ -22,8 +22,8 @@ public class AddCommand implements CommandInterface {
             return 1;
         }
         SpaceMarine spaceMarine = new SpaceMarineForm(console).build();
-        collectionManager.add(spaceMarine);
-        console.println(spaceMarine);
+        collection.add(spaceMarine);
+        console.print("Элемент добавлен в коллекцию");
         return 0;
     }
 

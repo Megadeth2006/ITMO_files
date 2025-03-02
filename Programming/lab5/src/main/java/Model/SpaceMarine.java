@@ -59,7 +59,15 @@ public class SpaceMarine implements Comparable<SpaceMarine>{
     }
     @Override
     public String toString() {
-        return Integer.toString(id) + "--" + name + "--" + coordinates + "--" + Long.toString(health) + "--" + achievements + "--" + Integer.toString(height) + "--" + meleeWeapon + "--" + chapter;
+        return "SpaceMarine: (id: " + Integer.toString(id) +
+                " | name: " + name +
+                " | coordinates: " + coordinates +
+                " | creationDate: " + creationDate +
+                " | health: " + Long.toString(health) +
+                " | achievements: " + achievements +
+                " | height: " + Integer.toString(height) +
+                " | meleeWeapon: " + meleeWeapon +
+                " | chapter: " + chapter + ")";
     }
 
 

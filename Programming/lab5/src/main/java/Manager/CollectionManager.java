@@ -9,16 +9,12 @@ import java.util.*;
 public class CollectionManager {
 
     public static Date initTime = new Date();
-    private HashMap<Integer, SpaceMarine> models = new HashMap<>();
-    private TreeSet<SpaceMarine> collection = new TreeSet<>();
-
-
-    public boolean add(SpaceMarine object){
-        if (isExist(object)) return false;
+    private final HashMap<Integer, SpaceMarine> models = new HashMap<>();
+    private final TreeSet<SpaceMarine> collection = new TreeSet<>();
+    public void add(SpaceMarine object){
+        if (!isExist(object)) return;
         models.put(object.getId(), object);
         collection.add(object);
-        return true;
-
     }
     public boolean updateById(int id, SpaceMarine object){
         if (!isExist(object)) return false;
@@ -64,7 +60,12 @@ public class CollectionManager {
         return healthSum;
     }
     public List<SpaceMarine> filterByAchievements(String achievement){
-        return collection.stream().filter(object -> object.getAchievements().contains(achievement)).toList();
+        if (!Objects.equals(achievement, "")) {
+            return collection.stream().filter(object -> (object.getAchievements().contains(achievement))).toList();
+        }
+        else{
+            return collection.stream().filter(object -> (Objects.equals(object.getAchievements(), ""))).toList();
+        }
     }
     public TreeSet<SpaceMarine> getCollection() {
         return collection;

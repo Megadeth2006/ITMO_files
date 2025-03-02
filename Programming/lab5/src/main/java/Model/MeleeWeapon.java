@@ -10,8 +10,16 @@ public enum MeleeWeapon {
     POWER_FIST;
 
     public static ArrayList<MeleeWeapon> names() {
-        ArrayList<MeleeWeapon> weapons = new ArrayList<>();
-        weapons.addAll(Arrays.asList(values()));
-        return weapons;
+
+        ArrayList<MeleeWeapon> meleeWeapons = new ArrayList<>();
+        for (MeleeWeapon value: MeleeWeapon.values()){
+            meleeWeapons.add(value);
+        }
+        return meleeWeapons;
+    }
+
+    @Override
+    public String toString() {
+        return this.name();
     }
 }

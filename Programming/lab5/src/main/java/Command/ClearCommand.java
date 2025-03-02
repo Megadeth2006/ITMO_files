@@ -3,13 +3,13 @@ package Command;
 import Manager.CollectionManager;
 import Manager.ConsoleManager;
 
-// TODO: написать логику
+
 public class ClearCommand implements CommandInterface{
     ConsoleManager console;
-    CollectionManager collectionManager;
-    public ClearCommand(ConsoleManager console, CollectionManager collectionManager){
+    CollectionManager collection;
+    public ClearCommand(ConsoleManager console, CollectionManager collection){
         this.console = console;
-        this.collectionManager = collectionManager;
+        this.collection = collection;
     }
 
     @Override
@@ -18,8 +18,13 @@ public class ClearCommand implements CommandInterface{
             console.printErr("Команда не принимает аргументы");
             return 1;
         }
-        collectionManager.clear();
+        collection.clear();
         console.println("Коллекция очищена!");
         return 0;
+    }
+
+    @Override
+    public String toString() {
+       return " : очистить коллекцию";
     }
 }

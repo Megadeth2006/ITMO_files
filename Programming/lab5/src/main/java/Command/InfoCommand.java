@@ -5,10 +5,10 @@ import Manager.ConsoleManager;
 
 public class InfoCommand implements CommandInterface{
     ConsoleManager console;
-    CollectionManager collectionManager;
-    public InfoCommand(ConsoleManager console, CollectionManager collectionManager){
+    CollectionManager collection;
+    public InfoCommand(ConsoleManager console, CollectionManager collection){
         this.console = console;
-        this.collectionManager = collectionManager;
+        this.collection = collection;
     }
 
 
@@ -19,9 +19,9 @@ public class InfoCommand implements CommandInterface{
             return 1;
         }
         console.println("Дата инициализации коллекции " + CollectionManager.initTime);
-        var collection = collectionManager.getCollection();
-        console.println("Тип коллекции: " + collection.getClass().getName());
-        console.println("Размер коллекции " + collection.size());
+        var Currentcollection = collection.getCollection();
+        console.println("Тип коллекции: " + Currentcollection.getClass().getName());
+        console.println("Размер коллекции " + Currentcollection.size());
         return 0;
     }
 

@@ -20,6 +20,6 @@ public class Chapter {
 
     @Override
     public String toString() {
-        return name + ", " + parentLegion;
+        return "(name: " + name + "; parentLegion: " + parentLegion + ")";
     }
 }

@@ -2,7 +2,9 @@ package Model.form;
 
 import Manager.ScannerManager;
 import Manager.ConsoleManager;
+import Model.MeleeWeapon;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.function.Predicate;
 //done
@@ -13,7 +15,8 @@ public abstract class Form<T> {
         this.console = console;
     }
     public abstract T build();
-    public String askString(String fieldName, String restrictions, Predicate<String> validator ){
+
+    public String askString(String fieldName, String restrictions, Predicate<String> validator){
         while (true){
             console.print("Введите " + fieldName + " " + restrictions);
             String input = scanner.nextLine().trim();
@@ -31,16 +34,16 @@ public abstract class Form<T> {
         }
 
     }
-    public Enum askEnum(String field, Enum[] values, Predicate<String> validator){
+    public MeleeWeapon askEnum(String field,  Predicate<String> validator){
         while (true){
             console.print("Введите " + field + "\n" + "Доступные значения: \n");
-            for (Enum value: values){
+            for (MeleeWeapon value: MeleeWeapon.values()){
                 console.print(value.toString() + ", ");
             }
 
             String input = scanner.nextLine().trim();
             if (validator.test(input)){
-                for (Enum value: values){
+                for (MeleeWeapon value: MeleeWeapon.values()){
                     if (value.toString().equals(input.toUpperCase())){
                         return value;
                     }
@@ -66,8 +69,10 @@ public abstract class Form<T> {
                 }
             }
             catch (NumberFormatException e){
-                if (input.isEmpty() && validator.test(null)){ // не понял
-                    return null;
+
+                if (input.isEmpty() && validator.test(null)){
+
+                    return 0;
                 }
                 else{
                     console.printErr("Неверный формат ввода");

@@ -30,13 +30,24 @@ public class SpaceMarineForm extends Form<SpaceMarine> {
                 askChapter()
                 );
     }
+    public SpaceMarine updater(int id){
+        return new SpaceMarine(id,
+                askString("SpaceMarine.name", "(Поле не может быть null, Строка не может быть пустой)", s -> !s.isEmpty()),
+                askCoordinates(),
+                LocalDateTime.now(),
+                askLong("SpaceMarine.health", "(Значение поля должно быть больше 0)", h -> (h != null && h > 0)),
+                askString("SpaceMarine.achievements", "(Поле может быть null)", h -> true),
+                askInt("SpaceMarine.height", "", h -> true),
+                askMeleeWeapon(),
+                askChapter());
+    }
 
     private Chapter askChapter() {
         return new ChapterForm(console).build();
     }
 
     private MeleeWeapon askMeleeWeapon() {
-        return (MeleeWeapon) askEnum("MeleeWeapon", MeleeWeapon.values(), s -> true);
+        return (MeleeWeapon) askEnum("MeleeWeapon", s -> true);
     }
 
     private Coordinates askCoordinates() {

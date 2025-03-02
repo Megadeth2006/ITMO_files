@@ -2,7 +2,7 @@ package Command;
 
 import Manager.ConsoleManager;
 
-// TODO: написать логику
+
 public class ExitCommand implements CommandInterface {
     ConsoleManager console;
     public ExitCommand(ConsoleManager console){
