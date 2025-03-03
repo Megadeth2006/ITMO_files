@@ -1,0 +1,2 @@
+execute_script file.txt
+sfjdoik
