@@ -14,15 +14,22 @@ public class AddIfMinCommand implements CommandInterface {
     ConsoleManager console;
     CollectionManager collection;
 
+    /**
+     * Конструктор класса.
+     *
+     * @param console объект менеджера консоли.
+     *
+     * @param collection объект менеджера коллекции.
+     */
     public AddIfMinCommand(ConsoleManager console, CollectionManager collection) {
         this.console = console;
         this.collection = collection;
     }
 
     /**
-     * Выполнение команды.
+     * Исполнение команды.
      *
-     * @param args аргументы
+     * @param args аргументы.
      */
     @Override
     public int execute(String[] args) {
@@ -32,16 +39,16 @@ public class AddIfMinCommand implements CommandInterface {
         }
         final SpaceMarine spaceMarine = new SpaceMarineForm(console).build();
         if (collection.addIfMin(spaceMarine)) {
-            console.print("Элемент добавлен в коллекцию");
+            console.println("Элемент добавлен в коллекцию");
         } else {
-            console.print("Элемент не добавлен в коллекцию");
+            console.println("Элемент не добавлен в коллекцию");
         }
         return 0;
     }
 
     @Override
     public String toString() {
-        return " : добавить новый элемент в коллекцию," +
-                " если его значение меньше, чем у наименьшего элемента этой коллекции";
+        return " : добавить новый элемент в коллекцию,"
+                + " если его значение меньше, чем у наименьшего элемента этой коллекции";
     }
 }

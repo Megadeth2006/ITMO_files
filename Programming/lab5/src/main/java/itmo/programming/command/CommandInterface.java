@@ -1,13 +1,13 @@
 package itmo.programming.command;
 
 /**
- * Интерфейс команд
+ * Интерфейс команд.
  */
 public interface CommandInterface {
     /**
-     * Выполнение команды
+     * Исполнение команды.
      *
-     * @param args аргументы
+     * @param args аргументы.
      */
     int execute(String[] args);
 }

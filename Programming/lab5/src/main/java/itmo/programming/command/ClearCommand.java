@@ -11,15 +11,22 @@ public class ClearCommand implements CommandInterface {
     ConsoleManager console;
     CollectionManager collection;
 
+    /**
+     * Конструктор класса.
+     *
+     * @param console объект менеджера консоли.
+     *
+     * @param collection объект менеджера коллекции.
+     */
     public ClearCommand(ConsoleManager console, CollectionManager collection) {
         this.console = console;
         this.collection = collection;
     }
 
     /**
-     * Выполнение команды
+     * Исполнение команды.
      *
-     * @param args Аргументы
+     * @param args аргументы.
      */
     @Override
     public int execute(String[] args) {

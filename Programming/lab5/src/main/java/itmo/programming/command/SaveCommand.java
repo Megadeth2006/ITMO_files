@@ -1,21 +1,34 @@
 package itmo.programming.command;
 
 import itmo.programming.manager.ConsoleManager;
-import itmo.programming.manager.JsonManager;
-
+import itmo.programming.manager.FileManager;
 import java.io.FileNotFoundException;
 
-
+/**
+ * Команда save.
+ * Описание команды: сохранить коллекцию в файл.
+ */
 public class SaveCommand implements CommandInterface {
     ConsoleManager console;
-    JsonManager jsonManager;
+    FileManager fileManager;
 
-    public SaveCommand(ConsoleManager console, JsonManager jsonManager) {
+    /**
+     * Конструктор класса.
+     *
+     * @param console объект менеджера консоли.
+     *
+     * @param fileManager объект менеджера Json.
+     */
+    public SaveCommand(ConsoleManager console, FileManager fileManager) {
         this.console = console;
-        this.jsonManager = jsonManager;
+        this.fileManager = fileManager;
     }
 
-
+    /**
+     * Исполнение команды.
+     *
+     * @param args аргументы.
+     */
     @Override
     public int execute(String[] args) {
         if (args.length != 0) {
@@ -23,7 +36,7 @@ public class SaveCommand implements CommandInterface {
             return 2;
         }
         try {
-            jsonManager.writeCollection();
+            fileManager.writeCollection();
             return 0;
         } catch (FileNotFoundException e) {
             console.printErr("Нет файла");

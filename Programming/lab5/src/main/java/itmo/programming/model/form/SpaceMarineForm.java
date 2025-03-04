@@ -8,18 +8,30 @@ import itmo.programming.model.MeleeWeapon;
 import itmo.programming.model.SpaceMarine;
 import java.time.LocalDateTime;
 
+/**
+ * Класс для запрашивания, заполнения полей SpaceMarine и последующей сборки экземпляра модели.
+ */
 public class SpaceMarineForm extends Form<SpaceMarine> {
     private final ConsoleManager console;
 
+    /**
+     * Конструктор класса.
+     *
+     * @param console объект менеджера консоли.
+     */
     public SpaceMarineForm(ConsoleManager console) {
         super(console);
         this.console = console;
     }
 
+    /**
+     * Запрашивание полей и возврат экземпляра собранной модели.
+     */
     @Override
     public SpaceMarine build() {
         return new SpaceMarine(IdManager.generateId(),
-                askString("SpaceMarine.name", "(Поле не может быть null, Строка не может быть пустой)",
+                askString("SpaceMarine.name",
+                        "(Поле не может быть null, Строка не может быть пустой)",
                         s -> !s.isEmpty()),
                 askCoordinates(),
                 LocalDateTime.now(),
@@ -33,9 +45,15 @@ public class SpaceMarineForm extends Form<SpaceMarine> {
         );
     }
 
+    /**
+     * Метод для обновления существующего в коллекции экземпляра модели.
+     *
+     * @param id id.
+     */
     public SpaceMarine updater(int id) {
         return new SpaceMarine(id,
-                askString("SpaceMarine.name", "(Поле не может быть null, Строка не может быть пустой)",
+                askString("SpaceMarine.name",
+                        "(Поле не может быть null, Строка не может быть пустой)",
                         s -> !s.isEmpty()),
                 askCoordinates(),
                 LocalDateTime.now(),
@@ -47,14 +65,23 @@ public class SpaceMarineForm extends Form<SpaceMarine> {
                 askChapter());
     }
 
+    /**
+     * Запрашивание полей Chapter.
+     */
     private Chapter askChapter() {
         return new ChapterForm(console).build();
     }
 
+    /**
+     * Запрашивание полей MeleeWeapon.
+     */
     private MeleeWeapon askMeleeWeapon() {
         return askEnum("MeleeWeapon", s -> true);
     }
 
+    /**
+     * Запрашивание полей Coordinates.
+     */
     private Coordinates askCoordinates() {
         return new CoordinatesForm(console).build();
     }

@@ -2,13 +2,26 @@ package itmo.programming.command;
 
 import itmo.programming.manager.ConsoleManager;
 
-
+/**
+ * Команда exit.
+ * Описание команды: завершить программу (без сохранения в файл).
+ */
 public class ExitCommand implements CommandInterface {
     ConsoleManager console;
 
+    /**
+     * Конструктор класса.
+     *
+     * @param console объект менеджера консоли.
+     */
     public ExitCommand(ConsoleManager console) {
         this.console = console;
     }
+    /**
+     * Исполнение команды.
+     *
+     * @param args аргументы.
+     */
 
     @Override
     public int execute(String[] args) {

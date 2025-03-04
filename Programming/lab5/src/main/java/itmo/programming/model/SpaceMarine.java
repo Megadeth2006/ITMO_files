@@ -1,26 +1,44 @@
 package itmo.programming.model;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Objects;
 
+/**
+ * Класс SpaceMarine модели.
+ */
 public class SpaceMarine implements Comparable<SpaceMarine> {
-    private final int id; //Значение поля должно быть больше 0,
-    // Значение этого поля должно быть уникальным,
-    // Значение этого поля должно генерироваться автоматически
-    private final String name; //Поле не может быть null, Строка не может быть пустой
-    private final Coordinates coordinates; //Поле не может быть null
+    private final int id;
+    private final String name;
+    private final Coordinates coordinates;
     private LocalDateTime creationDate;
-    //Поле не может быть null,
-    // Значение этого поля должно генерироваться автоматически
-    private final Long health; //Поле не может быть null,
-    // Значение поля должно быть больше 0
-    private final String achievements; //Поле может быть null
+    private final Long health;
+    private final String achievements;
     private final int height;
-    private final MeleeWeapon meleeWeapon; //Поле не может быть null
-    private final Chapter chapter; //Поле не может быть null
+    private final MeleeWeapon meleeWeapon;
+    private final Chapter chapter;
 
+    /**
+     * Конструктор класса.
+     *
+     * @param id id.
+     *
+     * @param name name.
+     *
+     * @param coordinates coordinates.
+     *
+     * @param creationDate creationDate.
+     *
+     * @param health health.
+     *
+     * @param achievements achievements.
+     *
+     * @param height height.
+     *
+     * @param meleeWeapon meleeWeapon.
+     *
+     * @param chapter chapter.
+     */
     public SpaceMarine(int id, String name, Coordinates coordinates,
                        LocalDateTime creationDate, Long health,
                        String achievements, int height, MeleeWeapon meleeWeapon, Chapter chapter) {
@@ -35,42 +53,65 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
         this.chapter = chapter;
     }
 
+    /**
+     * Получить значение поля name.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Получить значение поля x.
+     */
     public int getX() {
         return coordinates.getX();
     }
 
+    /**
+     * Получить значение поля y.
+     */
     public double getY() {
         return coordinates.getY();
     }
 
+    /**
+     * Получить значение поля health.
+     */
     public Long getHealth() {
         return health;
     }
 
+    /**
+     * Получить значение поля achievements.
+     */
     public String getAchievements() {
         return achievements;
     }
 
+    /**
+     * Получить значение поля height.
+     */
     public int getHeight() {
         return height;
     }
 
+    /**
+     * Получить значение поля chapter.
+     */
     public String getChapterName() {
         return chapter.getChapterName();
     }
 
+    /**
+     * Получить значение поля MeleeWeapon.
+     */
     public MeleeWeapon getMeleeWeapon() {
         return meleeWeapon;
     }
 
-    public static ArrayList<MeleeWeapon> getAllWeapons() {
-        return MeleeWeapon.names();
-    }
-
+    /**
+     * Получить значение поля parentLegion.
+     */
     public String getParentLegion() {
         return chapter.getParentLegion();
     }
@@ -78,43 +119,26 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
     @Override
     public String toString() {
         return "SpaceMarine: (id: "
-                +
-                id
-                +
-                " | name: "
-                +
-                name
-                +
-                " | coordinates: "
-                +
-                coordinates
-                +
-                " | creationDate: "
-                +
-                creationDate
-                +
-                " | health: "
-                +
-                health
-                +
-                " | achievements: "
-                +
-                achievements
-                +
-                " | height: "
-                +
-                height
-                +
-                " | meleeWeapon: " + meleeWeapon
-                +
-                " | chapter: " + chapter + ")";
+                + id
+                + " | name: "
+                + name
+                + " | coordinates: "
+                + coordinates
+                + " | creationDate: "
+                + creationDate
+                + " | health: "
+                + health
+                + " | achievements: "
+                + achievements
+                + " | height: "
+                + height
+                + " | meleeWeapon: " + meleeWeapon
+                + " | chapter: " + chapter + ")";
     }
 
-
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
-
+    /**
+     * Получить id объекта модели.
+     */
     public int getId() {
         return id;
     }

@@ -7,15 +7,24 @@ import com.google.gson.JsonParseException;
 import com.google.gson.reflect.TypeToken;
 import itmo.programming.model.SpaceMarine;
 import itmo.programming.utility.LocalDateTimeAdapter;
-
-import java.io.*;
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
 import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
 import java.util.TreeSet;
 
-public class JsonManager {
+/**
+ * Класс для работы с файлом.
+ */
+public class FileManager {
     private final Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls()
             .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
             .create();
@@ -23,12 +32,28 @@ public class JsonManager {
     private final ConsoleManager console;
     private final CollectionManager collection;
 
-    public JsonManager(String fileName, ConsoleManager console, CollectionManager collection) {
+    /**
+     * Конструктор класса.
+     *
+     * @param fileName название файла.
+     *
+     * @param console объект менеджера консоли.
+     *
+     * @param collection объект менеджера коллекции.
+     */
+    public FileManager(String fileName, ConsoleManager console, CollectionManager collection) {
         this.fileName = fileName;
         this.console = console;
         this.collection = collection;
     }
 
+    /**
+     * Метод для проверки возможности прочитать файл для исполнения.
+     *
+     * @param file объект файла.
+     *
+     * @param console объект менеджера консоли.
+     */
     public boolean canReadFile(File file, ConsoleManager console) {
         if (!file.exists()) {
             console.printErr("Файл не найден");
@@ -49,25 +74,41 @@ public class JsonManager {
         return true;
     }
 
+    /**
+     * Метод для записи коллекции в файл Json.
+     */
     public void writeCollection() throws FileNotFoundException {
 
-        TreeSet<SpaceMarine> currentCollection = collection.getCollection();
-        try (FileOutputStream fileOutputStream = new FileOutputStream(fileName); BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream)) {
+        final TreeSet<SpaceMarine> currentCollection = collection.getCollection();
+        final File file = new File(fileName);
+        if (file.exists()) {
+            try (FileOutputStream fileOutputStream = new FileOutputStream(fileName);
+                 BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(
+                         fileOutputStream)
+            ) {
+                bufferedOutputStream.write(gson.toJson(currentCollection).getBytes());
 
-            bufferedOutputStream.write(gson.toJson(currentCollection).getBytes());
-
-            console.println("Коллекция успешно записана в файл " + fileName);
-        } catch (IOException e) {
-            console.printErr("Файл не может быть открыт");
+                console.println("Коллекция успешно записана в файл " + fileName);
+            } catch (IOException e) {
+                console.printErr("Файл не может быть открыт");
+            }
+        } else {
+            console.printErr("Файла по пути " + fileName + " не существует");
         }
     }
 
+    /**
+     * Метод для чтения коллекции из файла Json.
+     *
+     * @param collection объект менеджера коллекции.
+     */
     public void readCollection(CollectionManager collection) {
 
         if (fileName != null && !fileName.isEmpty()) {
-            try (InputStreamReader fileReader = new InputStreamReader(new FileInputStream(fileName))) {
+            try (InputStreamReader fileReader = new InputStreamReader(
+                    new FileInputStream(fileName))) {
 
-                var reader = new BufferedReader(fileReader);
+                final var reader = new BufferedReader(fileReader);
                 var jsonString = new StringBuilder();
                 String line;
 
@@ -83,19 +124,25 @@ public class JsonManager {
                 if (jsonString.toString().equals("[]")) {
                     console.printWarning("Коллекция в файле пуста, но ничего страшного");
                 }
-                Gson gson = new GsonBuilder()
-                        .registerTypeAdapter(LocalDateTime.class, (JsonDeserializer<LocalDateTime>) (json, typeOfT, context) ->
+                final Gson gson = new GsonBuilder()
+                        .registerTypeAdapter(LocalDateTime.class,
+                                (JsonDeserializer<LocalDateTime>) (json, typeOfT, context) ->
                                 LocalDateTime.parse(json.getAsString()))
                         .create();
-                Type collectionType = new TypeToken<PriorityQueue<SpaceMarine>>() {
+                final Type collectionType = new TypeToken<PriorityQueue<SpaceMarine>>() {
                 }.getType();
-                PriorityQueue<SpaceMarine> currentCollection = gson.fromJson(jsonString.toString(), collectionType);
+                final PriorityQueue<SpaceMarine> currentCollection = gson.fromJson(
+                        jsonString.toString(), collectionType);
 
                 for (SpaceMarine spaceMarine : currentCollection) {
-                    if (ValidationManager.isValidSpaceMarine(spaceMarine, collection) && ValidationManager.isValidCoordinates(spaceMarine) && ValidationManager.isValidChapter(spaceMarine) && ValidationManager.isValidEnum(spaceMarine)) {
+                    if (ValidationManager.isValidSpaceMarine(
+                            spaceMarine, collection) && ValidationManager.isValidCoordinates(
+                            spaceMarine) && ValidationManager.isValidChapter(spaceMarine)
+                            && ValidationManager.isValidEnum(spaceMarine)) {
                         collection.add(spaceMarine);
                     } else {
-                        console.printErr("В файле содержится коллекция с данными в неверном формате");
+                        console.printErr("В файле содержится"
+                                + " коллекция с данными в неверном формате");
                     }
                 }
 

@@ -14,13 +14,20 @@ public class AddCommand implements CommandInterface {
     ConsoleManager console;
     CollectionManager collection;
 
+    /**
+     * Конструктор класса.
+     *
+     * @param console объект менеджера консоли.
+     *
+     * @param collection объект менеджера коллекции.
+     */
     public AddCommand(ConsoleManager console, CollectionManager collection) {
         this.console = console;
         this.collection = collection;
     }
 
     /**
-     * Выполнение команды.
+     * Исполнение команды.
      *
      * @param args аргументы.
      */
@@ -32,7 +39,7 @@ public class AddCommand implements CommandInterface {
         }
         final SpaceMarine spaceMarine = new SpaceMarineForm(console).build();
         collection.add(spaceMarine);
-        console.print("Элемент добавлен в коллекцию");
+        console.println("Элемент добавлен в коллекцию");
         return 0;
     }
 

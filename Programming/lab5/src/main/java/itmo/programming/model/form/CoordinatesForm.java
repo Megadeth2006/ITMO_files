@@ -3,12 +3,20 @@ package itmo.programming.model.form;
 import itmo.programming.manager.ConsoleManager;
 import itmo.programming.model.Coordinates;
 
+/**
+ * Класс для запрашивания и заполнения полей Coordinates.
+ */
 public class CoordinatesForm extends Form<Coordinates> {
-    private final ConsoleManager console;
     static final int xConstant = -549;
     static final int yConstant = -267;
+    private final ConsoleManager console;
+    /**
+     * Конструктор класса.
+     *
+     * @param console объект менеджера консоли.
+     */
 
-    public CoordinatesForm(ConsoleManager console) { // не понимаю, почему вызывается супер класс и this присваивается console
+    public CoordinatesForm(ConsoleManager console) {
         super(console);
         this.console = console;
     }

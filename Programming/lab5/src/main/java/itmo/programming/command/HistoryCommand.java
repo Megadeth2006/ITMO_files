@@ -2,16 +2,29 @@ package itmo.programming.command;
 
 import itmo.programming.manager.CommandManager;
 import itmo.programming.manager.ConsoleManager;
-
 import java.util.ArrayList;
 
+/**
+ * Команда history.
+ * Описание команды: вывести последние 15 команд (без их аргументов).
+ */
 public class HistoryCommand implements CommandInterface {
     ConsoleManager console;
 
+    /**
+     * Конструктор класса.
+     *
+     * @param console объект менеджера консоли.
+     */
     public HistoryCommand(ConsoleManager console) {
         this.console = console;
     }
 
+    /**
+     * Исполнение команды.
+     *
+     * @param args аргументы.
+     */
     @Override
     public int execute(String[] args) {
         if (args.length != 0) {
@@ -22,9 +35,9 @@ public class HistoryCommand implements CommandInterface {
         usedCommands = CommandManager.getUsedCommands();
 
         int c = 0;
-
-        if (usedCommands.size() >= 15) {
-            c = 15;
+        final int commandConst = 15;
+        if (usedCommands.size() >= commandConst) {
+            c = commandConst;
         } else {
             c = usedCommands.size();
 
@@ -32,10 +45,10 @@ public class HistoryCommand implements CommandInterface {
 
         for (String command : usedCommands) {
             if (c > 0) {
-                console.print(command);
+                console.println(command);
                 c -= 1;
                 if (c == 0) {
-                    console.print("Показаны до 15 последних использованных команд");
+                    console.println("Показаны до 15 последних использованных команд");
                 }
             } else {
                 console.printWarning("Нечего показывать");
