@@ -1,0 +1,390 @@
+@startuml ClassDiagram
+scale max 2000 width
+class itmo.programming.Main {
++static void main(String[] args) throws FileNotFoundException
+}
+itmo.programming.Main --down[#AAA]-o itmo.programming.manager.ConsoleManager
+itmo.programming.Main -down[#AAA]--o itmo.programming.manager.CollectionManager
+itmo.programming.Main -down[#AAA]-o itmo.programming.manager.FileManager
+itmo.programming.Main -down[#AAA]--o itmo.programming.manager.CommandManager
+itmo.programming.Main -down[#AAA]-o itmo.programming.command.HelpCommand
+itmo.programming.Main --down[#AAA]-o itmo.programming.command.InfoCommand
+itmo.programming.Main -down[#AAA]--o itmo.programming.command.ShowCommand
+itmo.programming.Main -down[#AAA]-o itmo.programming.command.AddCommand
+itmo.programming.Main -down[#AAA]--o itmo.programming.command.UpdateIdCommand
+itmo.programming.Main -down[#AAA]-o itmo.programming.command.RemoveByIdCommand
+'!>10 itmo.programming.Main --down[#AAA]-o itmo.programming.command.ClearCommand
+'!>10 itmo.programming.Main -down[#AAA]--o itmo.programming.command.SaveCommand
+'!>10 itmo.programming.Main -down[#AAA]-o itmo.programming.command.ExecuteScriptCommand
+'!>10 itmo.programming.Main -down[#AAA]--o itmo.programming.command.ExitCommand
+'!>10 itmo.programming.Main -down[#AAA]-o itmo.programming.command.HistoryCommand
+'!>10 itmo.programming.Main --down[#AAA]-o itmo.programming.command.FilterByAchievementsCommand
+'!>10 itmo.programming.Main -down[#AAA]--o itmo.programming.command.SumOfHealthCommand
+'!>10 itmo.programming.Main -down[#AAA]-o itmo.programming.command.AddIfMaxCommand
+'!>10 itmo.programming.Main -down[#AAA]--o itmo.programming.command.AddIfMinCommand
+'!>10 itmo.programming.Main -down[#AAA]-o itmo.programming.command.PrintAscendingCommand
+'!>10 itmo.programming.Main --down[#AAA]-o itmo.programming.manager.RuntimeManager
+
+class itmo.programming.utility.JsonDeserializer_LocalDateTime {
+-static final DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
++JsonElement serialize(LocalDateTime src,
+Type typeOfSrc, JsonSerializationContext context)
++LocalDateTime deserialize(JsonElement json, Type typeOfT,
+JsonDeserializationContext context)
+}
+
+
+class itmo.programming.model.Chapter {
+-String name
+-String parentLegion
++Chapter(String name, String parentLegion)
++String getChapterName()
++String getParentLegion()
++String toString()
+}
+
+
+class itmo.programming.model.Coordinates {
+-final int coordinatesX
+-final double coordinateY
++Coordinates(int coordinatesX, double coordinatesY)
++int getX()
++double getY()
++String toString()
+}
+
+
+enum itmo.programming.model.MeleeWeapon {
+POWER_SWORD,
+CHAIN_AXE,
+LIGHTING_CLAW,
+POWER_FIST
++static ArrayList<MeleeWeapon> names()
++String toString()
+}
+
+
+class itmo.programming.model.SpaceMarine implements Comparable {
+-final int id
+-final String name
+-final Coordinates coordinates
+-LocalDateTime creationDate
+-final Long health
+-final String achievements
+-final int height
+-final MeleeWeapon meleeWeapon
+-final Chapter chapter
++SpaceMarine(int id, String name, Coordinates coordinates,
+LocalDateTime creationDate, Long health,
+String achievements, int height, MeleeWeapon meleeWeapon, Chapter chapter)
++String getName()
++int getX()
++double getY()
++Long getHealth()
++String getAchievements()
++int getHeight()
++String getChapterName()
++MeleeWeapon getMeleeWeapon()
++String getParentLegion()
++String toString()
++int getId()
++boolean equals(Object obj)
++int hashCode()
++int compareTo(SpaceMarine object)
+}
+
+
+class itmo.programming.model.form.ChapterForm extends itmo.programming.model.form.Form {
+-final ConsoleManager console
++ChapterForm(ConsoleManager console)
++Chapter build()
+}
+itmo.programming.model.form.ChapterForm -down[#AAA]--o itmo.programming.model.Chapter
+
+class itmo.programming.model.form.CoordinatesForm extends itmo.programming.model.form.Form {
+static final int xConstant = -549
+static final int yConstant = -267
+-final ConsoleManager console
++CoordinatesForm(ConsoleManager console)
++Coordinates build()
+}
+itmo.programming.model.form.CoordinatesForm -down[#AAA]-o itmo.programming.model.Coordinates
+
+abstract class itmo.programming.model.form.Form<T> {
+-ConsoleManager console = null
+-final Scanner scanner = ScannerManager.getScanner()
++Form(ConsoleManager console)
++abstract T build()
++String askString(String fieldName, String restrictions, Predicate<String> validator)
++MeleeWeapon askEnum(String field, Predicate<String> validator)
++Integer askInt(String field, String restrictions, Predicate<Integer> validator)
++Long askLong(String field, String restrictions, Predicate<Long> validator)
++Double askDouble(String fieldName, String restrictions, Predicate<Double> validator)
+}
+
+
+class itmo.programming.model.form.SpaceMarineForm extends itmo.programming.model.form.Form {
+-final ConsoleManager console
++SpaceMarineForm(ConsoleManager console)
++SpaceMarine build()
++SpaceMarine updater(int id)
+-Chapter askChapter()
+-MeleeWeapon askMeleeWeapon()
+-Coordinates askCoordinates()
+}
+itmo.programming.model.form.SpaceMarineForm -down[#AAA]--o itmo.programming.model.SpaceMarine
+itmo.programming.model.form.SpaceMarineForm -down[#AAA]-o itmo.programming.model.SpaceMarine
+itmo.programming.model.form.SpaceMarineForm --down[#AAA]-o itmo.programming.model.form.ChapterForm
+itmo.programming.model.form.SpaceMarineForm -down[#AAA]--o itmo.programming.model.form.CoordinatesForm
+
+class itmo.programming.manager.CollectionManager {
++static Date initTime = new Date()
+-final HashMap<Integer, SpaceMarine> models = new HashMap<>()
+-final TreeSet<SpaceMarine> collection = new TreeSet<>()
++void add(SpaceMarine object)
++boolean updateById(int id, SpaceMarine object)
++boolean removeById(int id)
++boolean clear()
++boolean addIfMax(SpaceMarine object)
++boolean addIfMin(SpaceMarine object)
++long sumOfHealth()
++List<SpaceMarine> filterByAchievements(String achievement)
++TreeSet<SpaceMarine> getCollection()
++SpaceMarine findById(int id)
++boolean isExist(SpaceMarine object)
++List<SpaceMarine> printAscending()
+}
+
+
+class itmo.programming.manager.CommandManager {
+-static ArrayList<String> usedCommands = new ArrayList<>()
+HashMap<String, CommandInterface> commands = new HashMap<>()
+ConsoleManager console
++CommandManager(ConsoleManager console)
++static ArrayList<String> getUsedCommands()
++static void setUsedCommands(ArrayList<String> usedCommands)
++void addCommand(String commandName, CommandInterface command)
++int executeCommand(String commandName, String[] args)
++HashMap<String, CommandInterface> getCommands()
+}
+
+
+class itmo.programming.manager.ConsoleManager {
+-static Scanner consoleScanner = new Scanner(System.in)
+-static Scanner fileScanner = null
++String readln() throws NoSuchElementException, IllegalStateException
++void print(Object object)
++void println(Object object)
++void printErr(String message)
++void printWarning(String message)
+}
+
+
+class itmo.programming.manager.FileManager {
+-final Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls()
+.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+.create()
+-String fileName
+-final ConsoleManager console
+-final CollectionManager collection
++FileManager(String fileName, ConsoleManager console, CollectionManager collection)
++boolean canReadFile(File file, ConsoleManager console)
++void writeCollection() throws FileNotFoundException
++void readCollection(CollectionManager collection)
+}
+
+
+class itmo.programming.manager.IdManager {
+-static int id = 1
+-static CollectionManager collection
++static void setCollectionManager(CollectionManager collection)
++static int generateId()
+}
+
+
+class itmo.programming.manager.RuntimeManager {
+-CommandManager commandManager
+-FileManager fileManager
+-ConsoleManager console
+-CollectionManager collection
++RuntimeManager(ConsoleManager console,
+FileManager fileManager, CommandManager commandManager,
+CollectionManager collection)
++void interactiveMode() throws FileNotFoundException
+}
+
+
+class itmo.programming.manager.ScannerManager {
+-static Scanner scanner = new Scanner(System.in)
++static Scanner getScanner()
++static void setScanner(Scanner scanner1)
+}
+
+
+class itmo.programming.manager.ScriptManager {
+-static final Stack<String> pathStack = new Stack<>()
+-static final Stack<Scanner> scanners = new Stack<>()
++static void addToStack(String path) throws FileNotFoundException
++static boolean isRecursive(String path)
++static void removeFromStack()
++static Scanner getLastScanner()
+}
+
+
+class itmo.programming.manager.ValidationManager {
+static final int xConst = -549
+static final int yConst = -267
++static boolean isValidSpaceMarine(SpaceMarine object, CollectionManager collection)
++static boolean isValidCoordinates(SpaceMarine object)
++static boolean isValidChapter(SpaceMarine object)
++static boolean isValidEnum(SpaceMarine object)
+}
+
+
+class itmo.programming.command.AddCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CollectionManager collection
++AddCommand(ConsoleManager console, CollectionManager collection)
++int execute(String[] args)
++String toString()
+}
+itmo.programming.command.AddCommand -down[#AAA]-o itmo.programming.model.form.SpaceMarineForm
+
+class itmo.programming.command.AddIfMaxCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CollectionManager collection
++AddIfMaxCommand(ConsoleManager console, CollectionManager collection)
++int execute(String[] args)
++String toString()
+}
+itmo.programming.command.AddIfMaxCommand -down[#AAA]--o itmo.programming.model.form.SpaceMarineForm
+
+class itmo.programming.command.AddIfMinCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CollectionManager collection
++AddIfMinCommand(ConsoleManager console, CollectionManager collection)
++int execute(String[] args)
++String toString()
+}
+itmo.programming.command.AddIfMinCommand -down[#AAA]-o itmo.programming.model.form.SpaceMarineForm
+
+class itmo.programming.command.ClearCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CollectionManager collection
++ClearCommand(ConsoleManager console, CollectionManager collection)
++int execute(String[] args)
++String toString()
+}
+
+
+interface itmo.programming.command.CommandInterface {
+int execute(String[] args)
+}
+
+
+class itmo.programming.command.ExecuteScriptCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CommandManager commandManager
+FileManager fileManager
++ExecuteScriptCommand(ConsoleManager console,
+CommandManager commandManager, FileManager fileManager)
++int execute(String[] args)
+}
+
+
+class itmo.programming.command.ExitCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
++ExitCommand(ConsoleManager console)
++int execute(String[] args)
++String toString()
+}
+
+
+class itmo.programming.command.FilterByAchievementsCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CollectionManager collection
++FilterByAchievementsCommand(ConsoleManager console, CollectionManager collection)
++int execute(String[] args)
++String toString()
+}
+
+
+class itmo.programming.command.HelpCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CommandManager commandManager
++HelpCommand(ConsoleManager console, CommandManager commandManager)
++int execute(String[] args)
++String toString()
+}
+
+
+class itmo.programming.command.HistoryCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
++HistoryCommand(ConsoleManager console)
++int execute(String[] args)
++String toString()
+}
+
+
+class itmo.programming.command.InfoCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CollectionManager collection
++InfoCommand(ConsoleManager console, CollectionManager collection)
++int execute(String[] args)
++String toString()
+}
+
+
+class itmo.programming.command.PrintAscendingCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CollectionManager collection
++PrintAscendingCommand(ConsoleManager console, CollectionManager collection)
++int execute(String[] args)
++String toString()
+}
+
+
+class itmo.programming.command.RemoveByIdCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CollectionManager collection
++RemoveByIdCommand(ConsoleManager console, CollectionManager collection)
++int execute(String[] args)
++String toString()
+}
+
+
+class itmo.programming.command.SaveCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+FileManager fileManager
++SaveCommand(ConsoleManager console, FileManager fileManager)
++int execute(String[] args)
+}
+
+
+class itmo.programming.command.ShowCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CollectionManager collection
++ShowCommand(ConsoleManager console, CollectionManager collection)
++int execute(String[] args)
+}
+
+
+class itmo.programming.command.SumOfHealthCommand implements itmo.programming.command.CommandInterface {
+ConsoleManager console
+CollectionManager collection
++SumOfHealthCommand(ConsoleManager console, CollectionManager collection)
++int execute(String[] args)
++String toString()
+}
+
+
+class itmo.programming.command.UpdateIdCommand implements itmo.programming.command.CommandInterface {
+-ConsoleManager console
+-CollectionManager collection
++UpdateIdCommand(ConsoleManager console, CollectionManager collection)
++int execute(String[] args)
++String toString()
+}
+itmo.programming.command.UpdateIdCommand --down[#AAA]-o itmo.programming.model.form.SpaceMarineForm
+
+@enduml
