@@ -1,0 +1,11 @@
+DROP TABLE IF EXISTS 
+    Human_Attributes, 
+    Dinosaur_Attributes, 
+    Creature_Locations, 
+    Creature_Events, 
+    Creature_Reactions, 
+    Event_Consequences, 
+    Locations, 
+    Events, 
+    Creatures 
+CASCADE;
