@@ -1,0 +1,160 @@
+@startuml
+class Main {
+  + generateRandVal(base: double, dispersion: double): double
+  + main(args: String[]): void
+}
+
+class City {
+- name: String
+- streets: List<Street>
++ addStreet(street: Street): void
++ removeStreet(street: Street): void
++ setStreets(streets:ArrayList<Street>): void
++ getStreets(): ArrayList<Street>
++ getName(): String
++ hashCode(): int
++toString(): String
++ equals(obj: Object): String
+}
+
+class Street {
+  - name: String
+- AdExist: boolean
+-ShortiesMood: List<
+- hasLights: boolean
+- attractions: List<Attractions>
+- shorties: List<Shorty>
++ addAttraction(attraction: Attraction): void
++ addShorty(shorty: Shorty): void
++ getName(): String
++ hashCode(): int
++ toString(): String
++ equals(obj: Object): String
+}
+class AD {
+~ Color: String
+~ Company: String
+
+}
+interface Playable {
++start(): void
++stop(): void
+}
+abstract class Attraction {
+- name: String
+- state: String
++ Playable():
++ getStatus(): String
++ start(): void(abstract)
++ stop(): void
+}
+class Carousel{
+- Users: List<Shorty>
+- launcher: Shorty
++start(): void
++ play(): void
++hashCode(): int
++equals(obj: Object): boolean
++toString(): String
+}
+class FerrisWheel{
+- Users: List<Shorty> 
+- launcher: Shorty
++ start(): void
++ play(): void
++hashCode(): int
++equals(obj: Object): boolean
++toString(): String
+}
+class Swing{
+-User: Shorty
++ start(): void
++hashCode(): int
++equals(obj: Object): boolean
++toString(): String
+}
+enum AttractionStatus{
++OPERATIONAL
++IN_OPERATION
++OUT_OF_ORDER
+}
+class Shorty{
+- name: String
+- state: String
+- isHungry: boolean
+- inTheRestaurant: boolean
+- lookedAtTheRestaurant: boolean
++ eat(): void
++ walk(): void
++getState(): String
++getName(): String
++lookAtTheRestaurant(): void
++hashCode(): int
++equals(obj: Object): boolean
++toString(): String
+}
+class Neznaika{
++ eat(): void
++ walk(): void
++ useAttraction(): void
+}
+class Kozlik{
++ eat(): void
++ walk(): void
++ useAttraction(): void
+}
+enum Mood{
++ Happy
++ Envy
++ Sad
+}
+class OtherShorty{
++ OtherShorty()
+}
+exception AttractionException {
++ AttractionException(message: String)
++  getMessage(): String
+}
+exception HungryException {
++ HungryException(message: String)
++  getMessage(): String
+}
+
+class Restaurant {
+- customers: List<Shorty>
++ addCustomer(shorty: Shorty): void
++ describe(): void
+}
+
+
+
+exception Exception{
+}
+
+
+Main *-- City: композиция
+City o-- Street: агрегация 
+Attraction *-- Street: композиция
+Attraction <|-- Carousel: наследование
+Attraction <|-- FerrisWheel: наследование
+Attraction <|-- Swing: наследование
+Street  o-- Shorty: агрегация 
+Attraction  o-- Shorty: агрегация 
+Shorty <|-- Neznaika: наследование
+Shorty <|-- Kozlik: наследование
+Shorty <|-- OtherShorty: наследование
+Shorty o-- Mood: агрегация 
+Attraction *-- AttractionStatus: композиция
+City *-- AD: композиция
+
+Main *-- AttractionException: композиция
+Main *-- HungryException: композиция
+
+Playable <|.. Attraction: реализация
+Restaurant --- Shorty: связь
+
+Exception <|-- AttractionException: наследование
+
+
+Exception <|-- HungryException: наследование
+@enduml
