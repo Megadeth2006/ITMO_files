@@ -1,4 +1,4 @@
-package itmo.programming.model.form;
+package itmo.programming.model.make;
 
 import itmo.programming.manager.ConsoleManager;
 import itmo.programming.manager.ScannerManager;
@@ -15,7 +15,7 @@ import java.util.function.Predicate;
  *
  * @param <T> generic.
  */
-public abstract class Form<T> {
+public abstract class Make<T> {
     private ConsoleManager console = null;
     private final Scanner scanner = ScannerManager.getScanner();
 
@@ -24,7 +24,7 @@ public abstract class Form<T> {
      *
      * @param console объект менеджера консоли.
      */
-    public Form(ConsoleManager console) {
+    public Make(ConsoleManager console) {
         this.console = console;
     }
 
@@ -177,7 +177,7 @@ public abstract class Form<T> {
     public Double askDouble(String fieldName, String restrictions, Predicate<Double> validator) {
         while (true) {
             console.print("Введите " + fieldName + " " + restrictions + ": ");
-            final String input = scanner.nextLine().trim();
+            final String input = scanner.nextLine().trim().replace(",", ".");
             try {
                 final Double number = Double.parseDouble(input);
                 if (validator.test(number)) {

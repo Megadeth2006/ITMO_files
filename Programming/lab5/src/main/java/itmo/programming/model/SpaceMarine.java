@@ -11,7 +11,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
     private final int id;
     private final String name;
     private final Coordinates coordinates;
-    private LocalDateTime creationDate;
+    private final LocalDateTime creationDate;
     private final Long health;
     private final String achievements;
     private final int height;
@@ -162,7 +162,7 @@ public class SpaceMarine implements Comparable<SpaceMarine> {
     }
 
     @Override
-    public int compareTo(SpaceMarine object) { //спросить про сортировку по умолчанию
+    public int compareTo(SpaceMarine object) {
         return Comparator.comparingInt(SpaceMarine::getId).compare(this, object);
     }
 

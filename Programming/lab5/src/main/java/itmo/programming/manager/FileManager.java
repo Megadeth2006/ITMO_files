@@ -17,8 +17,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.time.LocalDateTime;
-import java.util.NoSuchElementException;
-import java.util.PriorityQueue;
 import java.util.TreeSet;
 
 /**
@@ -45,6 +43,26 @@ public class FileManager {
         this.fileName = fileName;
         this.console = console;
         this.collection = collection;
+    }
+
+    /**
+     * Метод для поиска файла. Имя вводит пользователь.
+     * Если файла нет в текущей директории, то файл ищется в директории,
+     * указанной в LAB_PATH (на helios добавлена эта переменная окружения)
+     */
+    public String findFile() {
+        File file = new File(fileName);
+        if (file.exists() && file.isFile()) {
+            return file.getAbsolutePath();
+        } else {
+            final String envPath = System.getenv("LAB_PATH");
+            file = new File(envPath, fileName);
+            if (file.isFile() && file.exists()) {
+                return file.getAbsolutePath();
+            }
+
+        }
+        return fileName;
     }
 
     /**
@@ -77,23 +95,26 @@ public class FileManager {
     /**
      * Метод для записи коллекции в файл Json.
      */
-    public void writeCollection() throws FileNotFoundException {
+    public boolean writeCollection() throws FileNotFoundException {
 
         final TreeSet<SpaceMarine> currentCollection = collection.getCollection();
+        fileName = findFile();
         final File file = new File(fileName);
+
         if (file.exists()) {
-            try (FileOutputStream fileOutputStream = new FileOutputStream(fileName);
-                 BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(
-                         fileOutputStream)
-            ) {
+            try (BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(
+                    new FileOutputStream(fileName))) {
                 bufferedOutputStream.write(gson.toJson(currentCollection).getBytes());
 
                 console.println("Коллекция успешно записана в файл " + fileName);
+                return true;
             } catch (IOException e) {
                 console.printErr("Файл не может быть открыт");
+                return false;
             }
         } else {
-            console.printErr("Файла по пути " + fileName + " не существует");
+            console.printErr("Файла по пути '" + fileName + "' не существует");
+            return false;
         }
     }
 
@@ -103,8 +124,9 @@ public class FileManager {
      * @param collection объект менеджера коллекции.
      */
     public void readCollection(CollectionManager collection) {
+        fileName = findFile();
 
-        if (fileName != null && !fileName.isEmpty()) {
+        if (fileName != null) {
             try (InputStreamReader fileReader = new InputStreamReader(
                     new FileInputStream(fileName))) {
 
@@ -129,32 +151,35 @@ public class FileManager {
                                 (JsonDeserializer<LocalDateTime>) (json, typeOfT, context) ->
                                 LocalDateTime.parse(json.getAsString()))
                         .create();
-                final Type collectionType = new TypeToken<PriorityQueue<SpaceMarine>>() {
+                final Type collectionType = new TypeToken<TreeSet<SpaceMarine>>() {
                 }.getType();
-                final PriorityQueue<SpaceMarine> currentCollection = gson.fromJson(
+                final TreeSet<SpaceMarine> currentCollection = gson.fromJson(
                         jsonString.toString(), collectionType);
-
-                for (SpaceMarine spaceMarine : currentCollection) {
-                    if (ValidationManager.isValidSpaceMarine(
-                            spaceMarine, collection) && ValidationManager.isValidCoordinates(
-                            spaceMarine) && ValidationManager.isValidChapter(spaceMarine)
-                            && ValidationManager.isValidEnum(spaceMarine)) {
-                        collection.add(spaceMarine);
-                    } else {
-                        console.printErr("В файле содержится"
-                                + " коллекция с данными в неверном формате");
+                if (currentCollection != null) {
+                    for (SpaceMarine spaceMarine : currentCollection) {
+                        if (ValidationManager.isValidSpaceMarine(
+                                spaceMarine, collection) && ValidationManager.isValidCoordinates(
+                                spaceMarine) && ValidationManager.isValidChapter(spaceMarine)
+                                && ValidationManager.isValidEnum(spaceMarine)) {
+                            collection.add(spaceMarine);
+                        } else {
+                            console.printErr("В файле содержится"
+                                    + " коллекция с данными в неверном формате");
+                        }
                     }
-                }
 
-                console.println("Коллекция по адресу: " + fileName + " загружена");
+                    console.println("Коллекция по адресу: " + fileName + " загружена");
+
+                } else {
+                    console.printErr("В файле содержится"
+                            + " коллекция с данными в неверном формате");
+                }
 
             } catch (FileNotFoundException e) {
                 console.printErr("Файла не существует");
-            } catch (NoSuchElementException e) {
-                console.printErr("Файл пустой");
             } catch (JsonParseException e) {
                 console.printErr("В файле нет коллекции нужного вида");
-            } catch (IllegalStateException | IOException e) {
+            } catch (IOException e) {
                 console.printErr("Непредвиденная ошибка");
             }
 

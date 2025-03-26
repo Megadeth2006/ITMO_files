@@ -9,15 +9,16 @@ import java.util.HashMap;
  */
 public class CommandManager {
     /**
-     * Список использованных команд в порядке времени использования.
-     */
-    private static ArrayList<String> usedCommands = new ArrayList<>();
-    /**
      * Хеш-словарь: Название команды - Объект команды, реализующий интерфейс.
      */
     HashMap<String, CommandInterface> commands = new HashMap<>();
 
     ConsoleManager console;
+    /**
+     * Список использованных команд в порядке времени использования.
+     */
+    private ArrayList<String> usedCommands = new ArrayList<>();
+
 
     /**
      * Конструктор класса.
@@ -31,8 +32,8 @@ public class CommandManager {
     /**
      * Получить список использованных команд.
      */
-    public static ArrayList<String> getUsedCommands() {
-        return usedCommands;
+    public ArrayList<String> getUsedCommands() {
+        return this.usedCommands;
     }
 
     /**
@@ -40,8 +41,8 @@ public class CommandManager {
      *
      * @param usedCommands использованные команды
      */
-    public static void setUsedCommands(ArrayList<String> usedCommands) {
-        CommandManager.usedCommands = usedCommands;
+    public  void setUsedCommands(ArrayList<String> usedCommands) {
+        this.usedCommands = usedCommands;
     }
 
     /**
@@ -65,19 +66,14 @@ public class CommandManager {
     public int executeCommand(String commandName, String[] args) {
         final CommandInterface command = commands.get(commandName);
         if (command != null) {
-            try {
-                final int response = command.execute(args);
-                final ArrayList<String> usedCommands = getUsedCommands();
-                usedCommands.add(commandName);
-                setUsedCommands(usedCommands);
-                return response;
-            } catch (NullPointerException e) {
-                console.printErr("Повторите попытку");
-                return -1;
-            }
+            final int response = command.execute(args);
+            final ArrayList<String> usedCommands = getUsedCommands();
+            usedCommands.add(commandName);
+            setUsedCommands(usedCommands);
+            return response;
         }
         console.println("Команды не существует");
-        return -1;
+        return 0;
     }
 
     /**

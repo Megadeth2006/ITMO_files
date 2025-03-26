@@ -2,7 +2,6 @@ package itmo.programming.command;
 
 import itmo.programming.manager.CollectionManager;
 import itmo.programming.manager.ConsoleManager;
-import itmo.programming.model.SpaceMarine;
 
 /**
  * Команда show.
@@ -36,9 +35,13 @@ public class ShowCommand implements CommandInterface {
             console.printErr("Команда не принимает аргументы");
             return 1;
         }
-        for (SpaceMarine object : collection.getCollection()) {
-            console.println(object);
-        }
+        console.print(collection.getCollectionAsString());
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        return ": вывести в стандартный поток вывода"
+                + " все элементы коллекции в строковом представлении";
     }
 }

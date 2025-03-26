@@ -1,4 +1,4 @@
-package itmo.programming.model.form;
+package itmo.programming.model.make;
 
 import itmo.programming.manager.ConsoleManager;
 import itmo.programming.model.Chapter;
@@ -6,17 +6,15 @@ import itmo.programming.model.Chapter;
 /**
  * Класс для запрашивания и заполнения значений полей Chapter.
  */
-public class ChapterForm extends Form<Chapter> {
-    private final ConsoleManager console;
+public class ChapterMake extends Make<Chapter> {
 
     /**
      * Конструктор класса.
      *
      * @param console объект менеджера консоли.
      */
-    public ChapterForm(ConsoleManager console) {
+    public ChapterMake(ConsoleManager console) {
         super(console);
-        this.console = console;
     }
 
     /**
@@ -25,8 +23,8 @@ public class ChapterForm extends Form<Chapter> {
     @Override
     public Chapter build() {
         return new Chapter(askString("Chapter.name",
-                "(Поле не может быть null, Строка не может быть пустой)",
+                "(String, Поле не может быть null, Строка не может быть пустой)",
                 s -> !s.isEmpty()),
-                askString("Chapter.parentlegion", "", s -> true));
+                askString("Chapter.parentlegion", "(String)", s -> true));
     }
 }

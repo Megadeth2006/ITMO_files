@@ -1,4 +1,4 @@
-package itmo.programming.model.form;
+package itmo.programming.model.make;
 
 import itmo.programming.manager.ConsoleManager;
 import itmo.programming.manager.IdManager;
@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * Класс для запрашивания, заполнения полей SpaceMarine и последующей сборки экземпляра модели.
  */
-public class SpaceMarineForm extends Form<SpaceMarine> {
+public class SpaceMarineMake extends Make<SpaceMarine> {
     private final ConsoleManager console;
 
     /**
@@ -19,7 +19,7 @@ public class SpaceMarineForm extends Form<SpaceMarine> {
      *
      * @param console объект менеджера консоли.
      */
-    public SpaceMarineForm(ConsoleManager console) {
+    public SpaceMarineMake(ConsoleManager console) {
         super(console);
         this.console = console;
     }
@@ -31,15 +31,15 @@ public class SpaceMarineForm extends Form<SpaceMarine> {
     public SpaceMarine build() {
         return new SpaceMarine(IdManager.generateId(),
                 askString("SpaceMarine.name",
-                        "(Поле не может быть null, Строка не может быть пустой)",
+                        "(String, Поле не может быть null, Строка не может быть пустой)",
                         s -> !s.isEmpty()),
                 askCoordinates(),
                 LocalDateTime.now(),
-                askLong("SpaceMarine.health", "(Значение поля должно быть больше 0)",
+                askLong("SpaceMarine.health", "(Long, Значение поля должно быть больше 0)",
                         h -> (h != null && h > 0)),
-                askString("SpaceMarine.achievements", "(Поле может быть null)",
+                askString("SpaceMarine.achievements", "(String, Поле может быть null)",
                         h -> true),
-                askInt("SpaceMarine.height", "", h -> true),
+                askInt("SpaceMarine.height", "(int)", h -> true),
                 askMeleeWeapon(),
                 askChapter()
         );
@@ -50,17 +50,17 @@ public class SpaceMarineForm extends Form<SpaceMarine> {
      *
      * @param id id.
      */
-    public SpaceMarine updater(int id) {
+    public SpaceMarine update(int id) {
         return new SpaceMarine(id,
                 askString("SpaceMarine.name",
-                        "(Поле не может быть null, Строка не может быть пустой)",
+                        "(String, Поле не может быть null, Строка не может быть пустой)",
                         s -> !s.isEmpty()),
                 askCoordinates(),
                 LocalDateTime.now(),
-                askLong("SpaceMarine.health", "(Значение поля должно быть больше 0)",
+                askLong("SpaceMarine.health", "(Long, Значение поля должно быть больше 0)",
                         h -> (h != null && h > 0)),
-                askString("SpaceMarine.achievements", "(Поле может быть null)", h -> true),
-                askInt("SpaceMarine.height", "", h -> true),
+                askString("SpaceMarine.achievements", "(String, Поле может быть null)", h -> true),
+                askInt("SpaceMarine.height", "(int)", h -> true),
                 askMeleeWeapon(),
                 askChapter());
     }
@@ -69,7 +69,7 @@ public class SpaceMarineForm extends Form<SpaceMarine> {
      * Запрашивание полей Chapter.
      */
     private Chapter askChapter() {
-        return new ChapterForm(console).build();
+        return new ChapterMake(console).build();
     }
 
     /**
@@ -83,7 +83,7 @@ public class SpaceMarineForm extends Form<SpaceMarine> {
      * Запрашивание полей Coordinates.
      */
     private Coordinates askCoordinates() {
-        return new CoordinatesForm(console).build();
+        return new CoordinatesMake(console).build();
     }
 
 

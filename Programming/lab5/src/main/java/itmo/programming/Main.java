@@ -22,7 +22,6 @@ import itmo.programming.manager.ConsoleManager;
 import itmo.programming.manager.FileManager;
 import itmo.programming.manager.IdManager;
 import itmo.programming.manager.RuntimeManager;
-import java.io.FileNotFoundException;
 
 /**
  * Главный класс.
@@ -30,15 +29,17 @@ import java.io.FileNotFoundException;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
 
         final ConsoleManager console = new ConsoleManager();
         final CollectionManager collection = new CollectionManager();
         String fileName = "";
-        console.println("Введите имя файла:");
-        fileName = console.readln();
-        final FileManager fileManager = new FileManager("src\\main\\java\\itmo\\programming\\"
-                + fileName, console, collection);
+        try {
+            fileName = args[0];
+        } catch (IndexOutOfBoundsException e) {
+            console.printWarning("Нет аргументов!");
+        }
+        final FileManager fileManager = new FileManager(fileName, console, collection);
         final CommandManager commandManager = new CommandManager(console);
         IdManager.setCollectionManager(collection);
 
@@ -73,7 +74,7 @@ public class Main {
                 new ExitCommand(console));
 
         commandManager.addCommand("history",
-                new HistoryCommand(console));
+                new HistoryCommand(console, commandManager));
 
         commandManager.addCommand("filter_by_achievements",
                 new FilterByAchievementsCommand(console, collection));

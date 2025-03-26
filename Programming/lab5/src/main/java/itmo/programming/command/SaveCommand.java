@@ -45,4 +45,8 @@ public class SaveCommand implements CommandInterface {
 
     }
 
+    @Override
+    public String toString() {
+        return ": сохранить коллекцию в файл";
+    }
 }

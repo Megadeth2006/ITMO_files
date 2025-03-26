@@ -50,8 +50,8 @@ public class ExecuteScriptCommand implements CommandInterface {
             console.printErr("Не хватает названия файла в качестве аргумента");
             return 1;
         }
-        final String prefix = "src\\main\\java\\itmo\\programming\\";
-        final String filename = prefix + args[0];
+
+        final String filename = args[0];
         final File file = new File(filename);
 
 
@@ -66,9 +66,9 @@ public class ExecuteScriptCommand implements CommandInterface {
                 final String line = scannerManager.nextLine();
                 final String[] command = line.trim().split(" ");
                 if (command[0].equalsIgnoreCase("execute_script")
-                        && ScriptManager.isRecursive(prefix + command[1])) {
+                        && ScriptManager.isRecursive(command[1])) {
                     console.printErr("Найдена рекурсия! Повторно вызывается файл: " + new File(
-                            prefix + command[1]).getAbsolutePath());
+                            command[1]).getAbsolutePath());
                     continue;
                 }
                 if (!(Objects.equals(command[0], ""))) {

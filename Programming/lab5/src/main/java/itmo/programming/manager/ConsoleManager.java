@@ -1,6 +1,5 @@
 package itmo.programming.manager;
 
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 /**
@@ -13,7 +12,7 @@ public class ConsoleManager {
     /**
      * Прочитать и вернуть данные с консоли или файла.
      */
-    public String readln() throws NoSuchElementException, IllegalStateException {
+    public String readln() {
         return (fileScanner == null ? consoleScanner : fileScanner).nextLine();
     }
 

@@ -15,7 +15,7 @@ public class CollectionManager {
     /**
      * Время инициализации коллекции.
      */
-    public static Date initTime = new Date();
+    public Date initTime = new Date();
     /**
      * Хеш-словарь для хранения объектов модели с быстрым обращением по ключу - id.
      */
@@ -23,6 +23,7 @@ public class CollectionManager {
     /**
      * Коллекция.
      */
+
     private final TreeSet<SpaceMarine> collection = new TreeSet<>();
 
     /**
@@ -31,7 +32,7 @@ public class CollectionManager {
      * @param object объект.
      */
     public void add(SpaceMarine object) {
-        if (!isExist(object)) {
+        if (isExist(object)) {
             return;
         }
         models.put(object.getId(), object);
@@ -44,11 +45,12 @@ public class CollectionManager {
      * @param id id.
      * @param object объект.
      */
-    public boolean updateById(int id, SpaceMarine object) {
+    public boolean updateById(Integer id, SpaceMarine object) {
         if (!isExist(object)) {
             return false;
         }
         collection.remove(findById(id));
+        models.remove(id);
         models.put(id, object);
         collection.add(object);
         return true;
@@ -78,6 +80,7 @@ public class CollectionManager {
         collection.clear();
         return true;
     }
+
 
     /**
      * Добавить элемент в коллекцию,
@@ -141,6 +144,37 @@ public class CollectionManager {
     }
 
     /**
+     * Метод для получения элементов коллекции в формате строки.
+     */
+    public String getCollectionAsString() {
+        String collectionString = "";
+        if (!collection.isEmpty()) {
+            for (SpaceMarine object : collection) {
+                collectionString += object;
+                collectionString += "\n";
+            }
+        } else {
+            collectionString = "Нечего выводить...\n";
+        }
+        return collectionString;
+    }
+
+    /**
+     * Получить размер коллекции.
+     */
+    public long getCollectionSize() {
+        return collection.size();
+    }
+
+    /**
+     * Получить тип коллекции.
+     */
+
+    public String getCollectionType() {
+        return collection.getClass().getTypeName();
+    }
+
+    /**
      * Получить коллекцию по id.
      *
      * @param id id.
@@ -155,16 +189,14 @@ public class CollectionManager {
      * @param object object.
      */
     public boolean isExist(SpaceMarine object) {
-        return (object != null && findById(object.getId()) == null);
+        return ((object != null) && (findById(object.getId()) != null));
     }
 
     /**
      * Получить элементы коллекции в порядке возрастания.
      */
-    public List<SpaceMarine> printAscending() {
-        final ArrayList<SpaceMarine> list = null;
-        list.addAll(collection);
-        return list;
+    public ArrayList<SpaceMarine> getAscending() {
+        return new ArrayList<>(collection);
     }
 
 }

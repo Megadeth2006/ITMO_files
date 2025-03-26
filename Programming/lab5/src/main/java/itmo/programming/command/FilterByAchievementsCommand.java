@@ -41,7 +41,7 @@ public class FilterByAchievementsCommand implements CommandInterface {
             console.print(object);
         }
         if (!filterList.isEmpty()) {
-            console.println("Выведены элементы,"
+            console.println("\nВыведены элементы,"
                     + " значение поля achievements которых равно заданному");
         } else {
             console.println("Нет элементов, значение поля achievements которых равно заданному");

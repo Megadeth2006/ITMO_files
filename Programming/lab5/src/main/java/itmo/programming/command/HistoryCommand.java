@@ -10,14 +10,16 @@ import java.util.ArrayList;
  */
 public class HistoryCommand implements CommandInterface {
     ConsoleManager console;
-
+    CommandManager commandManager;
     /**
      * Конструктор класса.
      *
      * @param console объект менеджера консоли.
      */
-    public HistoryCommand(ConsoleManager console) {
+
+    public HistoryCommand(ConsoleManager console, CommandManager commandManager) {
         this.console = console;
+        this.commandManager = commandManager;
     }
 
     /**
@@ -32,7 +34,7 @@ public class HistoryCommand implements CommandInterface {
             return 1;
         }
         ArrayList<String> usedCommands = new ArrayList<>();
-        usedCommands = CommandManager.getUsedCommands();
+        usedCommands = commandManager.getUsedCommands();
 
         int c = 0;
         final int commandConst = 15;
@@ -42,20 +44,21 @@ public class HistoryCommand implements CommandInterface {
             c = usedCommands.size();
 
         }
-
-        for (String command : usedCommands) {
-            if (c > 0) {
+        if (c == 0) {
+            console.printWarning("Нечего показывать");
+            return 0;
+        } else {
+            for (String command : usedCommands) {
                 console.println(command);
                 c -= 1;
                 if (c == 0) {
                     console.println("Показаны до 15 последних использованных команд");
+                    return 0;
                 }
-            } else {
-                console.printWarning("Нечего показывать");
-                return 0;
             }
+            return 0;
         }
-        return 0;
+
     }
 
     @Override

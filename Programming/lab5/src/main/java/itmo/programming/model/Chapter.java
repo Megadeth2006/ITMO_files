@@ -4,8 +4,8 @@ package itmo.programming.model;
  * Класс Chapter модели.
  */
 public class Chapter {
-    private String name; //Поле не может быть null, Строка не может быть пустой
-    private String parentLegion;
+    private final String name; //Поле не может быть null, Строка не может быть пустой
+    private final String parentLegion;
 
     /**
      * Конструктор класса.

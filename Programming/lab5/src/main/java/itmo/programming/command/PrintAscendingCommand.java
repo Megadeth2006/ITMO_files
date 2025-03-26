@@ -2,6 +2,8 @@ package itmo.programming.command;
 
 import itmo.programming.manager.CollectionManager;
 import itmo.programming.manager.ConsoleManager;
+import itmo.programming.model.SpaceMarine;
+import java.util.ArrayList;
 
 /**
  * Команда print_ascending.
@@ -34,11 +36,16 @@ public class PrintAscendingCommand implements CommandInterface {
             console.printErr("Команда не принимает аргументы");
             return 1;
         }
-
-        for (var object : collection.printAscending()) {
-            console.print(object);
+        final ArrayList<SpaceMarine> ascendingArray = collection.getAscending();
+        if (ascendingArray == null) {
+            console.printWarning("Коллекция пуста!");
+            return 0;
+        } else {
+            for (var object : ascendingArray) {
+                console.println(object);
+            }
+            return 0;
         }
-        return 0;
     }
 
     @Override

@@ -34,10 +34,22 @@ public class RemoveByIdCommand implements CommandInterface {
             console.printErr("Отсутствуют аргументы");
             return 1;
         }
-        final int id = Integer.parseInt(args[0]);
-        collection.removeById(id);
-        console.println("Элемент по индексу " + id + " успешно удален");
-        return 0;
+        try {
+            final int id = Integer.parseInt(args[0]);
+            if (collection.removeById(id)) {
+                console.println("Элемент по индексу " + id + " успешно удален");
+                return 0;
+            } else {
+                console.printErr("Элемента с индексом " + id + " не существует!");
+                return 1;
+            }
+
+        } catch (NumberFormatException e) {
+            console.printErr("Введите число!");
+            return 1;
+        }
+
+
     }
 
     @Override

@@ -3,7 +3,7 @@ package itmo.programming.command;
 import itmo.programming.manager.CollectionManager;
 import itmo.programming.manager.ConsoleManager;
 import itmo.programming.model.SpaceMarine;
-import itmo.programming.model.form.SpaceMarineForm;
+import itmo.programming.model.make.SpaceMarineMake;
 
 /**
  * Команда update.
@@ -40,14 +40,21 @@ public class UpdateIdCommand implements CommandInterface {
             final int id = Integer.parseInt(args[0]);
             if (collection.findById(id) == null) {
                 console.printErr("Элемента с таким индексом не существует");
+                return 1;
+            } else {
+                final SpaceMarine spaceMarine = new SpaceMarineMake(console).update(id);
+                collection.updateById(id, spaceMarine);
+                console.println("Значение элемента коллекции по id: "
+                        + args[0] + " успешно обновлено");
+                return 0;
             }
-            final SpaceMarine spaceMarine = new SpaceMarineForm(console).updater(id);
-            collection.updateById(id, spaceMarine);
-            console.println("Значение элемента коллекции по id: " + args[0] + " успешно обновлено");
-            return 0;
+
+
+
+
         } catch (NumberFormatException e) {
             console.printErr("Введите число в качестве id");
-            return 2;
+            return 1;
         }
 
     }

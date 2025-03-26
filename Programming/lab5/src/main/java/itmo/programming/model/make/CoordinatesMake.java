@@ -1,4 +1,4 @@
-package itmo.programming.model.form;
+package itmo.programming.model.make;
 
 import itmo.programming.manager.ConsoleManager;
 import itmo.programming.model.Coordinates;
@@ -6,27 +6,26 @@ import itmo.programming.model.Coordinates;
 /**
  * Класс для запрашивания и заполнения полей Coordinates.
  */
-public class CoordinatesForm extends Form<Coordinates> {
+public class CoordinatesMake extends Make<Coordinates> {
     static final int xConstant = -549;
     static final int yConstant = -267;
-    private final ConsoleManager console;
+
     /**
      * Конструктор класса.
      *
      * @param console объект менеджера консоли.
      */
 
-    public CoordinatesForm(ConsoleManager console) {
+    public CoordinatesMake(ConsoleManager console) {
         super(console);
-        this.console = console;
     }
 
     @Override
     public Coordinates build() {
         return new Coordinates(
-                askInt("SpaceMarine.x", "(Значение поля должно быть больше -549)",
+                askInt("SpaceMarine.x", "(int, Значение поля должно быть больше -549)",
                         x -> (x != null && x > xConstant)),
-                askDouble("SpaceMarine.y", "(Значение поля должно быть больше -267)",
+                askDouble("SpaceMarine.y", "(double, Значение поля должно быть больше -267)",
                         y -> (y != null && y > yConstant)));
     }
 }

@@ -3,7 +3,7 @@ package itmo.programming.command;
 import itmo.programming.manager.CollectionManager;
 import itmo.programming.manager.ConsoleManager;
 import itmo.programming.model.SpaceMarine;
-import itmo.programming.model.form.SpaceMarineForm;
+import itmo.programming.model.make.SpaceMarineMake;
 
 
 /**
@@ -37,7 +37,7 @@ public class AddCommand implements CommandInterface {
             console.printErr("Команда не принимает аргументы");
             return 1;
         }
-        final SpaceMarine spaceMarine = new SpaceMarineForm(console).build();
+        final SpaceMarine spaceMarine = new SpaceMarineMake(console).build();
         collection.add(spaceMarine);
         console.println("Элемент добавлен в коллекцию");
         return 0;

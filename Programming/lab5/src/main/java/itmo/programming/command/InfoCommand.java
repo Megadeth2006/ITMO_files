@@ -35,10 +35,12 @@ public class InfoCommand implements CommandInterface {
             console.printErr("Команда не принимает аргументы");
             return 1;
         }
-        console.println("Дата инициализации коллекции " + CollectionManager.initTime);
-        final var currentCollection = collection.getCollection();
-        console.println("Тип коллекции: " + currentCollection.getClass().getName());
-        console.println("Размер коллекции " + currentCollection.size());
+
+        final String collectionElements = collection.getCollectionAsString();
+        console.println("Дата инициализации коллекции " + collection.initTime);
+        console.println("Тип коллекции: " + collection.getCollectionType());
+        console.println("Размер коллекции " + collection.getCollectionSize());
+        console.print("Элементы коллекции:\n" + collectionElements);
         return 0;
     }
 
