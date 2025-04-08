@@ -1,7 +1,43 @@
 # Репозиторий первого курса ИТМО ВТ/ Repository of the first year of ITMO VT
+
 ## Если информация из этого репозитория тебе пригодилась, прошу поставить звездочку ⭐
-### [ОПД/Basics of Professional Activity](https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity)
+# Полностью копировать материал не советую - за это иногда карают
 
-### [Базы данных/DataBases](https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases)
 
-### [Информатика/Informatics](https://github.com/Megadeth2006/ITMO_files/tree/main/Informatics)
+# Дисциплины
+<pre>
+Вычислительная техника
+├── 1 семестр
+│   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming">Программирование </a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab1">Лаба 1</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab2">Лаба 2</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab3">Лаба 3</a>
+│   │   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab4">Лаба 4</a>
+│   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity">Основы Профессиональной деятельности (ОПД)</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab1">Лаба 1</a>
+│   │   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab2">Лаба 2</a>
+│   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Informatics">Информатика</a>
+│       ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Informatics/lab1">Лаба 1</a>
+│       ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Informatics/lab2">Лаба 2</a>
+│       ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Informatics/lab3">Лаба 3</a>
+│       ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Informatics/lab4">Лаба 4</a>
+│       ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Informatics/lab5">Лаба 5</a>
+│       └── <a href="hhttps://github.com/Megadeth2006/ITMO_files/tree/main/Informatics/lab6">Лаба 6</a>
+│
+├── 2 семестр
+│   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming">Программирование</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab5">Лаба 5</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab6">Лаба 6 (еще не сдана)</a>
+│   │   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab7">Лаба 7 (еще не сдана)</a>
+│   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity">Основы Профессиональной деятельности (ОПД)</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab3">Лаба 3</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab4">Лаба 4 (еще не сдана)</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab5">Лаба 5 (еще не сдана)</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab6">Лаба 6 (еще не сдана)</a>
+│   │   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab7">Лаба 7 (еще не сдана)</a>
+│   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases">Базы данных (БД)</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases/lab1">Лаба 1</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases/lab2">Лаба 2 (еще не сдана)</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases/lab3">Лаба 3 (еще не сдана)</a>
+│   │   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases/lab4">Лаба 4 (еще не сдана)</a>
+</pre>
