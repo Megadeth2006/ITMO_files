@@ -1,0 +1,212 @@
+{
+  "main": {
+    "id": "a7f5aefb1082ec82",
+    "type": "split",
+    "children": [
+      {
+        "id": "209f23ef9ea1efdc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2c8eb9bdbf55a9fd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a8da02b04f5f3e87",
+    "type": "split",
+    "children": [
+      {
+        "id": "d0e955775c2ae1ad",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "241d9563938bec44",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "25d0ca452719d18d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "2f8da4bf3bfac256",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "cd444724ae962d22",
+    "type": "split",
+    "children": [
+      {
+        "id": "03d36365697caaf9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7666e915c6650ac4",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "8. Определённый интеграл (суммы Дарбу).md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 8. Определённый интеграл (суммы Дарбу)"
+            }
+          },
+          {
+            "id": "1e38a13c542e1afa",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "8. Определённый интеграл (суммы Дарбу).md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 8. Определённый интеграл (суммы Дарбу)"
+            }
+          },
+          {
+            "id": "346b361fa41e80f8",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "0eca484f9f461808",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "8. Определённый интеграл (суммы Дарбу).md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of 8. Определённый интеграл (суммы Дарбу)"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "2c8eb9bdbf55a9fd",
+  "lastOpenFiles": [
+    "base/Матан №9.md",
+    "base/Матан №8.md",
+    "custom/11. Свойства интеграла Римана.md",
+    "custom/10. Классы интегрируемых функций.md",
+    "custom/9. Колебание функции.md",
+    "custom/8. Определённый интеграл (суммы Дарбу).md",
+    "base/Матан №7.md",
+    "custom/7. Определенный интеграл (Интеграл Римана).md",
+    "base/Матан №6.md",
+    "custom/6. Интегрирование тригонометрических и гиперболических функций.md",
+    "base/Матан №5.md",
+    "custom/5. Интегрирование дифференциального бинома.md",
+    "custom/4. Интегрирование некоторых иррациональных функций.md",
+    "base/Матан №4.md",
+    "base/Матан №3.md",
+    "custom/3. Интегрирование рациональных функций.md",
+    "base/Матан №2.md",
+    "custom/2. Интегрирование по частям.md",
+    "base/Матан №10.md",
+    "base/Матан №16.md",
+    "custom/25. Несобственный интеграл.md",
+    "custom/24. Длина пути (кривой).md",
+    "base/Матан №15.md",
+    "custom/23. Понятие пути (кривой).md",
+    "base/Матан №14.md",
+    "custom/22. Объём тела вращения.md",
+    "pasted/Pasted image 20250403124138.png",
+    "pasted/Pasted image 20250402231836.png",
+    "source/Матан №10.pdf",
+    "pasted/Pasted image 20250402005433.png",
+    "pasted/Pasted image 20250402005712.png",
+    "pasted",
+    "source/Матан №2.pdf",
+    "source/Матан №3.pdf",
+    "base",
+    "Pasted image 20250401230211.png",
+    "Pasted image 20250401230206.png",
+    "Pasted image 20250401230200.png"
+  ]
+}
