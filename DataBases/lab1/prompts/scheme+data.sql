@@ -133,4 +133,4 @@ INSERT INTO Dinosaur_Reactions VALUES
 INSERT INTO Event_Consequences VALUES
 (1, 'деревья повалены'),
 (1, 'пугающий шум в лесу'),
-(1, 'паника среди мелких динозавров');
+(1, 'паника среди мелких динозавров');э

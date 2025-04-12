@@ -7,8 +7,9 @@
 
 
 # Дисциплины 🔥
+[![Typing SVG](https://readme-typing-svg.demolab.com/?lines=Системное+Прикладное+Программное+Обеспечение+(09.03.04))](https://git.io/typing-svg)
+
 <pre>
-Системное прикладное программное обеспечение
 ├── 1 семестр
 │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming">Программирование </a>
 │   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab1">Лаба 1</a> <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab1/lab1.pdf">[отчет]</a>
