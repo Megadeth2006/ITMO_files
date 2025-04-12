@@ -7,7 +7,7 @@
 
 
 # Дисциплины 🔥
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=21&duration=2000&pause=100&color=5CF700&background=FFFFFF00&center=true&multiline=true&width=700&height=100&lines=%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D0%BE%D0%B5+%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D0%B0%D0%B4%D0%BD%D0%BE%D0%B5+%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%BD%D0%BE%D0%B5+%D0%9E%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5+(09.03.04);+;10000100001100001000110101100001111001000011)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=21&duration=4000&pause=100&color=14C1FF&background=FFFFFF00&center=true&multiline=true&width=700&height=100&lines=%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%BD%D0%BE%D0%B5+%D0%9F%D1%80%D0%B8%D0%BA%D0%BB%D0%B0%D0%B4%D0%BD%D0%BE%D0%B5+%D0%9F%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%BD%D0%BE%D0%B5+%D0%9E%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D0%B5+(09.03.04))](https://git.io/typing-svg)
 
 <pre>
 ├── 1 семестр
