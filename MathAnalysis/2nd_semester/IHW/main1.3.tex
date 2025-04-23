@@ -1,0 +1,114 @@
+\documentclass{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[utf8]{inputenc}
+
+% Useful packages
+\usepackage{listings}
+\setlength{\jot}{15pt}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{mathtools}        % улучшения для amsmath
+\usepackage{geometry}         % настройка полей
+\geometry{margin=2.5cm}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\lstset{basicstyle=\ttfamily\small, inputencoding=utf8, extendedchars=true}
+\title{Индивидуальное домашнее задание №1 (третья часть)\\Математический анализ\\Вариант 16}
+\author{Григорьев Даниил, ИСУ: 465635\\\\ Группа P3116, поток: Мат Ан Прод 11.3}
+\date{14 апреля 2025}
+\begin{document}
+\maketitle
+
+\section*{Задание}
+Исследовать несобственные интегралы на сходимость (в каждом варианте
+четыре интеграла). Если подынтегральная функция является
+знакопеременной, требуется исследовать интеграл на абсолютную и
+условную сходимости.
+\subsection*{a)}\[
+\int_1^\infty xe^{-x}sinxdx
+\]
+Применим признак абсолютной сходимости:
+\[
+\int_0^{\infty} |xe^{-x} \sin x| \, dx \leq \int_0^{\infty} xe^{-x} \, dx
+\]
+Поскольку $|\sin x| \leq 1$, и $\int_0^{\infty} xe^{-x} dx = 1 < \infty$, то интеграл абсолютно сходится, а значит и условно сходится
+\subsection*{Ответ}
+\boxed{\text{Сходится и условно, и абсолютно}}
+\subsection*{б)}
+\[\int_0^{\infty} \frac{x^{-\frac{1}{2}} \cos x}{1 + x^{-\frac{1}{3}}} \, dx
+\]
+На $[1, \infty)$ функция ведёт себя как:
+\[
+\frac{x^{-1/2} \cos x}{1 + x^{-1/3}} \sim \frac{x^{-1/2} \cos x}{x^{-1/3}} = x^{-1/6} \cos x
+\]
+Проверим абсолютную сходимость:
+\[
+\int_1^{\infty} \left| x^{-1/6} \cos x \right| dx \leq \int_1^{\infty} x^{-1/6} dx = \infty
+\]
+Виодно, что не сходится абсолютно. Проверим условную сходимость по признаку Дирихле: 1) $\cos x$ — ограничена и постоянно колеблется\\
+2) $f(x) = \frac{x^{-1/2}}{1 + x^{-1/3}}$ — убывает и стремится к нулю.\\
+
+Следовательно, интеграл условно сходится, но не абсолютно
+\subsection*{Ответ}
+\boxed{\text{Условно сходится, но не абсолютно}}
+\subsection*{в)}
+\[
+\int_0^1 \frac{\ln x}{\sqrt{(1 - x^2)^3}} \, dx
+\]
+Особенность в точке $x \to 0$ из-за логарифма. Посмотрим, как ведет себя подынтегральное выражение при $x \to 0$:
+\[
+\ln x \to -\infty, \quad \sqrt{(1 - x^2)^3} \to 1 \Rightarrow \frac{\ln x}{\sqrt{(1 - x^2)^3}} \sim \ln x
+\]
+
+Исследуем сходимость:
+\[
+\int_0^1 |\ln x| \, dx = \int_0^1 -\ln x \, dx = \left. -x \ln x + x \right|_0^1 = 1 < \infty
+\]
+
+При $x \to 1$:
+\[
+1 - x^2 \sim 2(1 - x) \Rightarrow \sqrt{(1 - x^2)^3} \sim \sqrt{8(1 - x)^3} \Rightarrow \frac{1}{(1 - x)^{\frac{3}{2}}}
+\]
+Значит:
+\[
+\int_{1 - \varepsilon}^1 \frac{|\ln x|}{(1 - x)^{\frac{3}{2}}} dx
+\]
+Поскольку логарифм ограничен вблизи $x = 1$, интеграл ведёт себя как:
+\[
+\int_{1 - \varepsilon}^1 \frac{1}{(1 - x)^{\frac{3}{2}}} dx = \infty
+\]
+
+Интеграл расходится при $x \to 1$.
+\subsection*{Ответ}
+\boxed{\text{Расходится}}
+\subsection*{г)}
+\[
+\int_0^2 \frac{\ln(2 - x/2)}{\sin(x - 2)} \cdot ctg\left(\sqrt{\frac{\pi x}{2}}\right) dx
+\]\\
+
+Особенность в точке $x = 2$:\\
+1)$\sin(x - 2) \sim x - 2$\\
+2)$\ln(2 - x/2) \sim \ln(1 - x/4) \to \ln 0 \to -\infty$\\
+3)$\ctg\left(\sqrt{\frac{\pi x}{2}}\right) \to \ctg(\sqrt{\pi})$ — конечная функция\\
+
+Значит, при $x \to 2$:
+\[
+\frac{\ln(2 - x/2)}{\sin(x - 2)} \sim \frac{\ln(2 - x/2)}{x - 2}
+\]
+Это аналогично интегралу:
+\[
+\int_0^\delta \frac{\ln x}{x} dx \Rightarrow \text{расходится}
+\]
+Значит исходный интеграл расходится при $x \to 2$
+\subsection*{Ответ}
+\boxed{\text{Расходится}}
+\end{document}

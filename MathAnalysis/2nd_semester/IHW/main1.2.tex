@@ -1,0 +1,161 @@
+\documentclass{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[utf8]{inputenc}
+
+% Useful packages
+\usepackage{listings}
+\setlength{\jot}{15pt}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{mathtools}        % улучшения для amsmath
+\usepackage{geometry}         % настройка полей
+\geometry{margin=2.5cm}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\lstset{basicstyle=\ttfamily\small, inputencoding=utf8, extendedchars=true}
+\title{Индивидуальное домашнее задание №1 (2 часть)\\Математический анализ\\Вариант 6}
+\author{Григорьев Даниил, ИСУ: 465635\\\\ Группа P3116, поток: Мат Ан Прод 11.3}
+\date{16 апреля 2025}
+\begin{document}
+\maketitle
+\section*{Вычислить длину кривой, заданной параметрически или в
+полярных координатах}
+1. $x = sin^4t, y = cos^2t$
+\subsection*{Решение}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    title={Кривая \( x = \sin^4 t \), \( y = \cos^2 t \)},
+    xlabel={\( x \)},
+    ylabel={\( y \)},
+    xmin=0, xmax=1,
+    ymin=0, ymax=1,
+    grid=major,
+    smooth,
+    samples=100
+]
+\addplot [domain=0:pi, blue, thick] ({sin(deg(x))^4}, {cos(deg(x))^2});
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+Формула длины кривой в параметрическом виде выглядит так:\[
+L = \int_{t_1}^{t_2} \sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2}dt 
+\]
+
+Вычисляем производные:
+\[
+\frac{dx}{dt} = 4 \sin^3 t \cdot \cos t
+\]
+\[
+\frac{dy}{dt} = -2 \cos t \cdot \sin t
+\]
+Подставляем в подынтегральное выражение в формуле длины кривой и преобразуем:
+\[
+\sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} = \sqrt{16 \sin^6 t \cos^2 t + 4 \cos^2 t \sin^2 t} = \sqrt{4 \cos^2 t \sin^2 t (4 \sin^4 t + 1)}
+\]
+\[
+    \sqrt{4 \cos^2 t \sin^2 t (4 \sin^4 t + 1)} = 2 |\cos t \sin t| \sqrt{4 \sin^4 t + 1}
+\]
+Заметим, что $x(t) = sin^4t = (sin^2t)^2 \geq 0$, а также $x(t)$ имеет период $\pi$, то есть $x(t)$ симметрично относительно t = $\pi$
+Аналогично $y(t)=cos^2t\geq 0$ и y(t) имеет период $\pi$
+Если рассмотреть промежуток $t \in [0, \frac{\pi}{2}]$, то $sint \in [0, 1] \Longrightarrow x(t) = sin^4t \in [0,1]; cost\in [1, 0] \Longrightarrow y(t)=cos^2t\in[1, 0]$, значит график кривой идет от точки (0, 1) к (1, 0) в первой четверти
+Если рассматривать дальше промежуток $t\in[\frac{\pi}{2}, \pi], sint$ будет положительным, но начнет убывать, а $cost$ станет отрицательным $\Rightarrow y(t)=cos^2t$ будет положительной, но траектория кривой начнет повторяться, так как $sin^2t, cos^2t$ - периодические с периодом $\pi$. То есть полный цикл $x(t), y(t)$ проходит за $t\in[0, \pi]$ (на $t\in[\frac{\pi}{2}, \pi]]$ кривая "возвращается" обратно по пройденному пути), значит графики кривой на таких промежутках симметричны $\Rightarrow$ длины кривых равны (на графике выше как раз наблюдаем такую ситуацию)\\
+Тогда получаем такое выражение для длины кривой, принимая $t\in[0, \pi]$:
+\[
+L = \int_0^{\pi/2} 2\cos t \sin t \sqrt{4 \sin^4 t + 1} \, dt
+\]
+Сделаем замену \( u = \sin^2 t \), \( du = 2 \sin t \cos t \, dt \):
+\[
+L = \int_0^1 \sqrt{4u^2 + 1} \, du
+\]
+Этот интеграл вычисляется таким образом (интеграл от иррациональной функции):
+\[
+\int_0^{1} \sqrt{4u^2 + 1} \, du = \left. \frac{u}{2} \sqrt{4u^2 + 1} \Big|_0^1+ \frac{1}{4} \ln \left(\sqrt{4u^2 + 1} -2u \right) \right|_0^1 = \frac{\sqrt{5}}{2} + \frac{1}{4} \ln (\sqrt{5} - 2 ) \approx 1,4789
+\]
+
+
+\subsection*{Ответ}
+Длина кривой равна:
+\[
+\boxed{\frac{\sqrt{5}}{2} + \frac{1}{4} \ln (\sqrt{5} - 2 ) \approx 1,4789}
+\]
+\section*{Задание 2}
+Вычислить длину кривой, заданной параметрически или в
+полярных координатах
+\[
+\phi = \frac{\sqrt{r^2-2}}{\sqrt{2}}-arccos\frac{\sqrt{2}}{r}, 2 \leq r \leq3
+\]
+
+
+
+Кривая задана в полярных координатах как функция \(\varphi = \varphi(r)\), то есть зависимость угла от радиуса.  
+Используем формулу длины кривой в полярных координатах, заданной функцией \(\varphi(r)\):
+
+\[
+L = \int_{r_1}^{r_2} \sqrt{1 + r^2 \left( \frac{d\varphi}{dr} \right)^2} \, dr
+\]
+
+Где:
+\(\varphi(r) = \frac{\sqrt{r^2 - 2}}{\sqrt{2}} - \arccos\left( \frac{\sqrt{2}}{r} \right)\) \\
+\(r \in [2, 3]\)
+
+\subsection*{Найдём производную \(\frac{d\varphi}{dr}\):}
+
+
+\[
+\frac{d}{dr} \left( \frac{\sqrt{r^2 - 2}}{\sqrt{2}} \right)
+= \frac{1}{\sqrt{2}} \cdot \frac{1}{2\sqrt{r^2 - 2}} \cdot 2r
+= \frac{r}{\sqrt{2(r^2 - 2)}}
+\]
+
+\[
+\frac{d}{dr} \left( \arccos\left( \frac{\sqrt{2}}{r} \right) \right)
+= \frac{1}{\sqrt{1 - \left( \frac{\sqrt{2}}{r} \right)^2}} \cdot \frac{d}{dr} \left( \frac{\sqrt{2}}{r} \right)
+= \frac{1}{\sqrt{1 - \frac{2}{r^2}}} \cdot \left( -\frac{\sqrt{2}}{r^2} \right)
+\]
+
+Итак имеем:
+\[
+\frac{d\varphi}{dr} = \frac{r}{\sqrt{2(r^2 - 2)}} + \frac{\sqrt{2}}{r^2 \sqrt{1 - \frac{2}{r^2}}}
+= \frac{r}{\sqrt{2(r^2 - 2)}} + \frac{\sqrt{2}}{r^2 \cdot \sqrt{\frac{r^2 - 2}{r^2}}}
+= \frac{r}{\sqrt{2(r^2 - 2)}} + \frac{\sqrt{2}}{\sqrt{r^2 - 2}}
+\]
+
+Приведём к общему знаменателю:
+
+\[
+\frac{d\varphi}{dr} = \frac{r + 2}{\sqrt{2(r^2 - 2)}}
+\]
+
+Теперь подставим это значение в формулу длины кривой, заданной в полярных координатах:
+
+\[
+L = \int_2^3 \sqrt{1 + r^2 \left( \frac{r + 2}{\sqrt{2(r^2 - 2)}} \right)^2 } \, dr
+= \int_2^3 \sqrt{1 + \frac{r^2 (r + 2)^2}{2(r^2 - 2)} } \, dr 
+\]
+С помощью метода Симпсона и языка программирования Python я нашел численное значение интеграла:
+\begin{lstlisting}[language=Python]
+import numpy as np
+from scipy.integrate import simpson
+
+r_values = np.linspace(2, 3, 1001)
+
+
+integrand = np.sqrt(1 + (r_values**2 * (r_values + 2)**2) / (2 * (r_values**2 - 2)))
+length = simpson(integrand, r_values)
+print(length)
+\end{lstlisting}
+После запуска кода получаем значение 4.029614169529282
+\subsection*{Ответ}
+\boxed{\approx4.029614169529282}
+\end{document}

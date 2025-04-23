@@ -1,0 +1,338 @@
+\documentclass{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[utf8]{inputenc}
+
+% Useful packages
+\usepackage{listings}
+\setlength{\jot}{15pt}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{mathtools}        % улучшения для amsmath
+\usepackage{geometry}         % настройка полей
+\geometry{margin=2.5cm}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\lstset{basicstyle=\ttfamily\small, inputencoding=utf8, extendedchars=true}
+\title{Индивидуальное домашнее задание\\Математический анализ\\Вариант 4}
+\author{Григорьев Даниил, ИСУ: 465635\\\\ Группа P3116, поток: Мат Ан Прод 11.3}
+\date{07 апреля 2025}
+\begin{document}
+\maketitle
+
+\section*{Задание 1}
+
+\subsection*{1.1 С помощью интеграла Римана вычислить площадь фигуры, ограниченной графиками функций:}
+\[y=\frac{10}{x^2+4}, y=\frac{x^2+5x+4}{x^2+4}\]
+\begin{center}
+\begin{tikzpicture}
+  \begin{axis}[
+    axis lines = center,
+    xlabel = $x$,
+    ylabel = $y$,
+    grid = both,
+    xmin=-9, xmax=3,
+    ymin=-1, ymax=9,
+    samples=100,
+    domain=-9:3,
+  ]
+    \addplot[blue, thick] {10/(x^2+4)};
+    \addlegendentry{$y = 10/(x^2+4)$};
+
+    \addplot[red, thick]{(x^2+5*x+4)/(x^2+4)};
+    \addlegendentry{$y=(x^2+5x+4)/(x^2+4)$}
+  \end{axis}
+\end{tikzpicture}
+\end{center}
+
+\subsection*{Решение}
+Для начала, найдем точки пересечения графиков исходных функций:
+\[
+\frac{10}{x^2 + 4} = \frac{x^2 + 5x + 4}{x^2 + 4}
+\Rightarrow 10 = x^2 + 5x + 4
+\Rightarrow x^2 + 5x - 6 = 0
+\Rightarrow x = -6, \quad x = 1
+\]
+По графику сверху видно, что сверху находится график функции $y=\frac{10}{x^2+4}$ а снизу - $y=\frac{x^2+5x+4}{x^2+4}$ \\
+Теперь найдём разность функций и преобразуем ее в сумму правильных рациональных дробей:
+\[
+y_1 - y_2 = \frac{10 - (x^2 + 5x + 4)}{x^2 + 4}  = \frac{-x^2 - 5x + 6}{x^2 + 4} = \frac{-x^2 - 4}{x^2 + 4} + \frac{-5x + 10}{x^2 + 4} = -1 - \frac{5(x - 2)}{x^2 + 4}
+\]
+Тогда площадь равна: 
+\[
+S = \int_{-6}^{1} \left(-1 - \frac{5(x - 2)}{x^2 + 4}\right) dx = -\int_{-6}^{1} dx - 5\int_{-6}^{1} \frac{x - 2}{x^2 + 4} dx
+\]
+Преобразуем интеграл $\int_{-6}^{1} \frac{x - 2}{x^2 + 4} dx$:
+\begin{align*}
+&\int_{-6}^{1} \frac{x - 2}{x^2 + 4} dx = \int_{-6}^{1} \frac{x}{x^2 + 4} dx - 2\int_{-6}^{1} \frac{1}{x^2+4} =\\
+&= \frac{1}{2}\int_{-6}^{1} \frac{d(x^2+4)}{x^2+4}-2\int_{-6}^{1}\frac{1}{x^2+4}
+\end{align*}
+Тогда получаем:
+\begin{align*}
+S &= -\int_{-6}^{1}dx - \frac{5}{2}\int_{-6}^{1}\frac{d(x^2+4)}{x^2+4} + 10 \int_{-6}^{1}\frac{1}{x^2+4} =\\
+&= -x \Bigl\lvert_{-6}^{1} \ - \ \frac{5}{2} ln|x^2+4|\Bigl\lvert_{-6}^{1} + 10 * \frac{1}{2}arctg(\frac{x}{2})\Bigl\lvert_{-6}^{1} =\\
+&= -1 - 6 - \frac{5}{2}ln|5| + \frac{5}{2}ln|40| + 5 arctg(1/2) - 5arctg(-3) =\\
+&= -7 + \frac{5}{2} ln8 + 5 (arctg(1/2) + arctg(3)) 
+\end{align*}
+Это будет примерно равно: $-7+5,1986 + 8,56347 \approx 6,76207$
+
+\textbf{Ответ:}\\
+\\
+\boxed{S = -7 + \frac{5}{2}\ln8 + 5\left(\arctan\frac{1}{2} + \arctan3\right) \approx 6,76207}
+\\
+
+\noindent\rule{\linewidth}{0.4pt}
+
+1.2 Вычислить площадь фигуры, ограниченной графиками функций:
+\[
+y = \frac{10}{x^2+4}, y = \frac{x^2+5x+4}{x^2+4}
+\]
+приближенно с помощью интегральных сумм. Сравнить результаты точного и численного вычислений при n = 10,100, 1000.
+
+\subsection*{Решение}
+Формула, по которой будем вычислять площадь фигуры с помощью интегральных сумм:
+\[
+S = \sum_{i=1}^{n}(f_{\text{верх}}(x_i)-f_{\text{нижн}}(x_i))\Delta x = \sum_{i=1}^{n}(-1 - \frac{5(x - 2)}{x^2 + 4}), \quad x_i=a+(b-a)\frac{i}{n}, \quad \Delta x = \frac{b-a}{n}, a=-6,b=1
+\]
+Ниже приведен код программы на языке Python, реализующий интегральную сумму в приближенном виде (зависит от n):
+\begin{lstlisting}[language=Python]
+def f_upper(x):
+    return 10 / (x**2 + 4)
+
+def f_lower(x):
+    return (x**2 + 5*x + 4) / (x**2 + 4)
+
+a, b = -6, 1
+n = int(input())
+
+dx = (b - a) / n
+sum_integral = 0
+for i in range(1, n+1):
+    xi = a + (b - a) * i / n
+    sum_integral += (f_upper(xi) - f_lower(xi)) * dx
+print(str(n) + ": " + str(sum_integral))
+\end{lstlisting}
+
+\subsection*{Результаты}
+
+1) $n = 10:$ результат $S = 6.697507069500442$, : разница составляет $0.0645629305$\\
+2) $n = 100:$ результат $S = 6.761427609769792$, разница составляет: $0.000064239$\\
+3) $n = 1000:$ результат $S = 6.762064329942248$, разница составляет: $0.00000567$\\
+С увеличением n разница между точным и приближенным значениями уменьшается\\
+\noindent\rule{\linewidth}{0.4pt}
+\newpage
+\section*{Задание 2}
+Вычислить площадь в полярной системе координат:\\
+2.1  Представить геометрическую интерпретацию розы:\ $(x^2 + y^2)^{2.5} = 4x^2y^2$
+\subsection*{Решение}
+Заметим, что график будет симметричен относительно горизонтали и вертикали, так как
+\[
+(x, y)  \iff (-x, -y) \iff (-x, y) \iff (x, -y)
+\]
+Перейдём к полярной системе координат:
+\[
+x = r\cos\phi, \quad y = r\sin\phi
+\]
+Тогда:
+\[
+(x^2 + y^2)^{2.5} = r^5, \quad 4x^2y^2 = 4r^4\cos^2\phi\sin^2\phi = r^4\sin^2(2\phi)
+\]
+Таким образом, уравнение преобразуется к:
+\[
+r = \sqrt{\sin(2\phi)}
+\]
+\begin{itemize}
+  \item Подкоренное выражение должно быть неотрицательным: \( \sin(2\phi) \geq 0 \)
+  \item Следовательно, определение функции ограничено интервалами:
+  \[ \phi \in \left[0, \frac{\pi}{2}\right], \left[\pi, \frac{3\pi}{2}\right], \ldots \]
+  \item В этих интервалах функция \(r(\phi)\) принимает вещественные положительные либо ноль значения
+  \item Максимальное значение: \( \sin(2\phi) = 1 \Rightarrow r = 1 \) при \(\phi = \frac{\pi}{4}, \frac{5\pi}{4}, \ldots\)
+   \item Число лепестков: 4 (каждый располагается через угол \(\frac{\pi}{2}\))
+  \item Один лепесток расположен в диапазоне углов \(\phi \in [0, \frac{\pi}{2}]\)
+\end{itemize}
+Это уравнение задаёт розу с четырьмя лепестками. Один лепесток расположен в пределах \(\phi \in [0, \frac{\pi}{4}]\).
+\begin{tikzpicture}
+  \begin{axis}[
+      axis equal image,
+       xmin = -1, xmax = 1,
+       ymin = -1, ymax = 1,
+      axis lines = middle,
+      xlabel = $x$,
+      ylabel = $y$,
+      domain = 0:360,
+      samples = 800,
+      smooth,
+  ]
+    \addplot [thick, blue]
+      ({4*cos(x)^2*sin(x)^2*cos(x)},
+       {4*cos(x)^2*sin(x)^2*sin(x)});
+  \end{axis}
+\end{tikzpicture}
+\\
+\noindent\rule{\linewidth}{0.4pt}
+\subsection*{2.2  Вычислить площадь фигуры, ограниченной лепестками розы, с помощью интеграла Римана.}
+Площадь в полярной системе координат выражается формулой:
+\[
+S = \frac{1}{2}\int_{\alpha}^{\beta} r^2(\phi) \, d\phi
+\]
+Подставим:\
+\(r(\phi) = \sqrt{\sin(2\phi)}\), область одного лепестка: \(\phi \in [0, \frac{\pi}{4}]\)
+\[
+S_1 = \frac{1}{2} \int_0^{\pi/4} \sin(2\phi) \, d\phi
+\]
+Площадь всей фигуры будет равна $4S_1$, так как все лепестки равны между собой в силу симметричности:
+\[
+S = 4S_1 = 2 \int_0^{\pi/4} \sin(2\phi) \, d\phi = 1
+\]
+\textbf{Ответ:} 1\\
+
+\noindent\rule{\linewidth}{0.4pt}
+\
+\subsection*{2.3 Вычислить площадь фигуры, ограниченной лепестками розы, приближенно с помощью интегральных сумм. Сравнить результаты точного и численного вычислений при n = 10,100, 1000.}
+\[
+S \approx 2 \cdot \sum_{i=1}^{n} \sin(2\phi_i) \cdot \Delta\phi, \quad \phi_i = \frac{i\pi}{4n},\; \Delta\phi = \frac{\pi}{4n}
+\]
+\textbf{Программа на Python:}
+
+\begin{lstlisting}
+import numpy as np
+import math
+n = int(input())
+dphi = math.pi / (4 * n)
+phis = np.linspace(dphi, np.pi / 4, n)
+integral = np.sum(np.sin(2 * phis)) * dphi
+S = 2 * integral
+print(n, S)
+\end{lstlisting}
+
+\textbf{Результаты:}
+
+\begin{itemize}
+  \item При $n=10$: \quad $S = 1.076482802694102$, \quad разница 0.076482802694102
+  \item При $n=100$: \quad $S = 1.0078334198735819$, \quad разница 0.0078334198735819
+  \item При $n=1000$: \quad $S = 1.0007851925466307$, \quad разница 0.0007851925466307
+\end{itemize}
+С увеличением n разница между точным и приближенным значениями уменьшается\\
+\noindent\rule{\linewidth}{0.4pt}
+\newpage
+\section*{Задание 3}
+\subsection*{Вычислить площадь фигуры, ограниченной петлёй кривой:}
+\[
+x = 4t-t^3, y = sin(\frac{\pi t}{2}), \quad t \in [0, 2]
+\]
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.8\textwidth,
+    height=0.6\textwidth,
+    xlabel={$x$},
+    ylabel={$y$},
+    grid=major,
+    smooth,
+    samples=600,
+    domain=0:2,
+    xtick={-4,-2,0,2,4},
+    ytick={-1,-0.5,0,0.5,1},
+    legend pos=north west
+]
+
+% Рисуем основную кривую
+\addplot [blue, thick, variable=\t] ({4*\t - \t^3}, {sin(pi*\t/2 r)});
+
+% Пометка начальной точки (t=0)
+\addplot [only marks, mark=*, red] coordinates {(0,0)};
+\node at (axis cs: 0.5,0.2) {$t=0$};
+
+% Пометка конечной точки (t=2)
+\addplot [only marks, mark=*, red] coordinates {(0,0)};
+\node at (axis cs: 0,0.2) {$t=2$};
+
+% Пометка особой точки (t=1)
+\addplot [only marks, mark=*, green] coordinates {(3,1)};
+\node at (axis cs: 3,0.8) {$t=1$};
+
+\end{axis}
+\end{tikzpicture}
+\caption{График параметрической кривой с петлёй при $t \in [0,2]$.}
+\end{figure}
+
+Площадь, ограниченная замкнутой кривой, может быть найдена по формуле:
+\[
+S = \int_{t_1}^{t_2} y(t) x'(t) \, dt
+\]
+Считаем производную от x(t):
+\[
+x'(t) = 4 - 3t^2
+\]
+Тогда имеем:
+\[
+  S = \int_{0}^{2} \sin(\pi t^2)\,(4 - 3t^2)\,dt = 4\int_{0}^{2} \sin(\pi t^2)\,dt
+    - 3\int_{0}^{2} t^2\sin(\pi t^2)\,dt
+\]
+
+
+
+Преобразуем первый интеграл:
+\[
+\int_{0}^{2} \sin\left(\frac{\pi t}{2}\right) dt = 4\left[-\frac{2}{\pi} \cos\left(\frac{\pi t}{2}\right)\right]_0^2 = 4\left(-\frac{2}{\pi} \cos\pi + \frac{2}{\pi} \cos 0\right) = 4\left(\frac{2}{\pi} + \frac{2}{\pi}\right) = \frac{16}{\pi}.
+\]
+ Вычислим второй интеграл методом интегрирования по частям:
+Пусть \(u = t^2\), \(dv = \sin\left(\frac{\pi t}{2}\right) dt\), тогда:
+\[
+du = 2t dt, \quad v = -\frac{2}{\pi} \cos\left(\frac{\pi t}{2}\right).
+\]
+Применяем формулу интегрирования по частям:
+\[
+\int t^2 \sin\left(\frac{\pi t}{2}\right) dt = -\frac{2t^2}{\pi} \cos\left(\frac{\pi t}{2}\right) + \frac{4}{\pi} \int t \cos\left(\frac{\pi t}{2}\right) dt.
+\]
+Пусть \(u = t\), \(dv = \cos\left(\frac{\pi t}{2}\right) dt\), тогда:
+\[
+du = dt, \quad v = \frac{2}{\pi} \sin\left(\frac{\pi t}{2}\right).
+\]
+Получаем:
+\[
+\int t \cos\left(\frac{\pi t}{2}\right) dt = \frac{2t}{\pi} \sin\left(\frac{\pi t}{2}\right) - \frac{2}{\pi} \int \sin\left(\frac{\pi t}{2}\right) dt = \frac{2t}{\pi} \sin\left(\frac{\pi t}{2}\right) + \frac{4}{\pi^2} \cos\left(\frac{\pi t}{2}\right).
+\]
+Подставим обратно:
+\[
+\int t^2 \sin\left(\frac{\pi t}{2}\right) dt = -\frac{2t^2}{\pi} \cos\left(\frac{\pi t}{2}\right) + \frac{4}{\pi} \left(\frac{2t}{\pi} \sin\left(\frac{\pi t}{2}\right) + \frac{4}{\pi^2} \cos\left(\frac{\pi t}{2}\right)\right).
+\]
+Упрощаем:
+\[
+= -\frac{2t^2}{\pi} \cos\left(\frac{\pi t}{2}\right) + \frac{8t}{\pi^2} \sin\left(\frac{\pi t}{2}\right) + \frac{16}{\pi^3} \cos\left(\frac{\pi t}{2}\right).
+\]
+Подставим пределы от 0 до 2:
+При \(t = 2\):
+\[
+-\frac{8}{\pi} \cos\pi + \frac{16}{\pi^2} \sin\pi + \frac{16}{\pi^3} \cos\pi = \frac{8}{\pi} - \frac{16}{\pi^3}.
+\]
+При \(t = 0\):
+\[
+0 + 0 + \frac{16}{\pi^3} \cos 0 = \frac{16}{\pi^3}.
+\]
+Разность:
+\[
+\left(\frac{8}{\pi} - \frac{16}{\pi^3}\right) - \frac{16}{\pi^3} = \frac{8}{\pi} - \frac{32}{\pi^3}.
+\]
+Таким образом:
+\[
+-3 \left(\frac{8}{\pi} - \frac{32}{\pi^3}\right) = -\frac{24}{\pi} + \frac{96}{\pi^3}.
+\]
+
+Теперь суммируем полученное:
+\[
+S = \frac{16}{\pi} - \frac{24}{\pi} + \frac{96}{\pi^3} = -\frac{8}{\pi} + \frac{96}{\pi^3} = \frac{96 - 8\pi^2}{\pi^3}.
+\]
+\subsection*{Ответ}
+\boxed{\frac{96 - 8\pi^2}{\pi^3}\approx0,549668}
+
+\end{document}

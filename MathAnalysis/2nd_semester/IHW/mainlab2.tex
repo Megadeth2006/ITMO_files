@@ -1,0 +1,148 @@
+\documentclass{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[utf8]{inputenc}
+
+% Useful packages
+\usepackage{listings}
+\setlength{\jot}{15pt}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{mathtools}        % улучшения для amsmath
+\usepackage{geometry}         % настройка полей
+\geometry{margin=2.5cm}
+\usepackage{enumitem}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\lstset{basicstyle=\ttfamily\small, inputencoding=utf8, extendedchars=true}
+\title{Лабораторная работа №2\\Математический анализ\\Вариант 1}
+\author{Григорьев Даниил, ИСУ: 465635\\\\ Группа P3116, поток: Мат Ан Прод 11.3}
+\date{14 апреля 2025}
+\begin{document}
+\maketitle
+
+\section*{Задание 1}
+\subsection*{Длина кривой Безье}
+Задача — протянуть оптоволоконный кабель от точки $A$ до точки $C$, огибая точку $K$ и используя наименьшее количество материала (длина кабеля минимальна). Для моделирования кабеля необходимо использовать единственную кривую Безье второго порядка на плоскости, проходящую через все три точки. В процессе решения нужно в явном виде использовать интегральную формулу вычисления длины кривой. Разрешается использовать любые программные пакеты для выполнения алгебраических операций и взятия интегралов, все вычисления следует привести в отчёте с подробным описанием. В ответе должна присутствовать длина провода и координаты опорных точек кривой Безье. Также необходимо продемонстрировать результат графически. Кривая Безье второго порядка на плоскости имеет следующее уравнение:
+
+\[
+B(t) = (1 - t)^2 A + 2t(1 - t)B + t^2C,
+\]
+
+где $A, B, C \in \mathbb{R}^2$ — опорные точки кривой. $A(0, 0)$; $C(10, 0)$; $K(x, y)$ зависит от варианта.
+
+В моем варианте: K(x, y): K(2, 7)
+\subsection*{Решение}
+Кривая должна проходить через точку $K(2,7)$ при некотором $t = t_k$:
+\[
+\begin{cases}
+2 = 2t_k(1-t_k)x_b + 10t_k^2 \\
+7 = 2t_k(1-t_k)y_b
+\end{cases}
+\]
+
+Выражаем координаты опорной точки $B$:
+\[
+x_b = \frac{2 - 10t_k^2}{2t_k(1-t_k)}, \quad y_b = \frac{7}{2t_k(1-t_k)}
+\]
+Заметим, что если мы подставим в уравнение кривой Безье t = 0, то получим $B(0) = A + 0*B + 0 * C = A$, при t = 1 имеем: $B(1) = 0*A + 0*B + C = C$, значит пределы интегрирования при вычислении длины кривой будут от 0 до 1 (так как A и С - крайние точки графика кривой).
+Тогда длина кривой вычисляется по формуле:
+\[
+L = \int_0^1 \sqrt{(x'(t))^2 + (y'(t))^2} dt
+\]
+где производные:
+\[
+x'(t) = 2(1-2t)x_b + 20t, \quad y'(t) = 2(1-2t)y_b
+\]
+По условию задачи длина кривой должна иметь минимальное значение. Найдем такое $t_k \in (0,1)$, при котором L будет иметь минимальное значение (сделаем это с помощью метода Симпсона)
+\begin{lstlisting}[language=Python]
+import numpy as np
+from scipy.integrate import simpson
+
+def compute_length_simpson(t_k, n_points=1001):
+    B_x = (2 - 10 * t_k**2) / (2 * t_k * (1 - t_k))
+    B_y = 7 / (2 * t_k * (1 - t_k))
+    t = np.linspace(0, 1, n_points)
+    x_prime = 2*(1-2*t)*B_x + 20*t
+    y_prime = 2*(1-2*t)*B_y
+    integrand = np.sqrt(x_prime**2 + y_prime**2)
+    return simpson(integrand, t)
+
+t_min, t_max = 0.01, 0.99 
+N = 1000                  
+n_int_points = 1001      
+
+t_k_values = np.linspace(t_min, t_max, N)
+lengths = np.zeros(N)
+
+for i, t_k in enumerate(t_k_values):
+    lengths[i] = compute_length_simpson(t_k, n_int_points)
+
+optimal_idx = np.argmin(lengths)
+optimal_t_k = t_k_values[optimal_idx]
+optimal_length = lengths[optimal_idx]
+
+optimal_B_x = (2 - 10*optimal_t_k**2)/(2*optimal_t_k*(1-optimal_t_k))
+optimal_B_y = 7/(2*optimal_t_k*(1-optimal_t_k))
+
+
+print(optimal_t_k:.6f)
+print(optimal_length:.6f)
+print(optimal_B_x:.6f)
+print(optimal_B_y:.6f)
+\end{lstlisting}
+После запуска программы получаем:\\
+Минимальная длина L = 18.686170 \\
+Достигается при $t_k$ = 0.455365 \\
+В этом случае координаты точки B такие:\\
+$x_B$= -0.148334 \\
+$y_B$ = 14.112462 \\
+\newpage
+На этом графике синим цветом продемонстрирован график итоговой кривой:\\
+\begin{tikzpicture}[scale=0.4]
+
+  % Координатные оси
+  \draw[->] (-2, 0) -- (12, 0) node[right] {$x$};
+  \draw[->] (0, -2) -- (0, 16) node[above] {$y$};
+
+  % Деления по x
+  \foreach \x in {0, 2, 4, 6, 8, 10}
+    \draw (\x, 0.2) -- (\x, -0.2) node[below] {\x};
+
+  % Деления по y
+  \foreach \y in {2, 4, 6, 8, 10, 12, 14}
+    \draw (0.2, \y) -- (-0.2, \y) node[left] {\y};
+
+  % Опорные точки
+  \coordinate (A) at (0, 0);
+  \coordinate (B) at (-0.14, 14.11);
+  \coordinate (C) at (10, 0);
+
+  % Рисуем кривую Безье
+  \draw[thick, blue, domain=0:1, samples=100, smooth, variable=\t] 
+    plot ({(1-\t)^2 * 0 + 2*(1-\t)*\t*(-0.14) + \t^2 * 10},
+          {(1-\t)^2 * 0 + 2*(1-\t)*\t*14.11 + \t^2 * 0});
+
+  % Отображение точек
+  \fill[green] (A) circle (4pt) node[above left] {$A(0,0)$};
+  \fill[red] (B) circle (4pt) node[above left] {$B(-0.14,\ 14.11)$};
+  \fill[green] (C) circle (4pt) node[above right] {$C(10,0)$};
+  \fill[orange] (2, 7) circle (4pt) node[above] {$K(2,7)$};
+
+  % Вспомогательные линии
+  \draw[dashed, gray] (A) -- (B) -- (C);
+
+\end{tikzpicture}
+\subsection*{Ответ:}
+Длина кабеля $\approx$ 18.68617\\
+Координаты опорных точек:\\
+$x_B$= -0.148334 \\
+$y_B$ = 14.112462 \\
+\end{document}
