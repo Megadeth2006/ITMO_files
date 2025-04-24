@@ -1,0 +1,39 @@
+ORG 0x010
+RES_ADRESS: WORD 0x5f7
+EOF: WORD 0x0d
+TMP: WORD ?
+
+ORG 0x0b6
+START: CLA
+
+S1: IN 5
+    AND #0x40
+    BEQ S1
+
+    IN 4
+    SWAB
+    ST (RES_ADRESS)
+
+    SWAB
+    CMP EOF
+    BEQ STOP
+
+S2: IN 5
+    AND #0x40
+    BEQ S2
+
+    IN 4
+    ST TMP
+    ADD (RES_ADRESS)
+    ST (RES_ADRESS)+
+
+    LD TMP
+    CMP EOF
+    BEQ STOP
+
+    JUMP S1
+STOP: HLT
+
+ORG 0x5f7
+RES: WORD ?
+
