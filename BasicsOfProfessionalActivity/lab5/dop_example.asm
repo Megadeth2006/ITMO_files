@@ -11,7 +11,7 @@ jump read_digit
 HLT
 
 
-: вторая версия
+; вторая версия
 org 0x60
 start:
 	cla
