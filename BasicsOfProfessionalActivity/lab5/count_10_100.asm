@@ -10,19 +10,18 @@ start:
 
 
 loop100:
-
-	ld #0x9C
-	add $num
-	st $num
-
+	ld num
+	cmp #0x64
 	blt end100
-	beq end100
-
-	
-	
+	add #0x9c
+	st $num
 	ld $cnt100
 	add #0x0001
 	st $cnt100
+	
+	beq end100
+
+	
 	
 	jump $loop100
 
