@@ -16,12 +16,25 @@ p1000: word 0x3e8
 cnt1000: word 0x0
 cnt100: word 0x0
 cnt10: word 0x0
+
 start: ; начало работы
 	cla
-	jump clear_indicator
+	jump clear_1indicator
 ; - - - - - - - - - - - - - - - - - - - - - 
-
-clear_indicator: ; очищаем индикатор перед работой калькулятора или после введения оператора
+clear_indicator:
+	ld #0x4b
+	out 0x14
+	ld #0x3b
+	out 0x14
+	ld #0x2b
+	out 0x14
+	ld #0x1b
+	out 0x14
+	ld #0x0b
+	out 0x14
+	
+	jump read_symb1
+clear_1indicator: ; очищаем индикатор перед работой калькулятора или после введения оператора
 	ld #0x4b
 	out 0x14
 	ld #0x3b
@@ -91,7 +104,7 @@ read_symb1: ; читает 1 символ введенный в цифровую
 	cmp #0x0b
 	beq read_symb1
 	cmp #0x0a
-	beq set_minus ; надо проверить работу
+	beq set_minus 
 	
 second_support:
 	jump $second
@@ -132,7 +145,7 @@ read_symb2: ; читает 2 символ введенный в цифровую
 	
 third_support:
 	jump $third
-read_symb3: ; читает 3 символ введенный в цифровую панель не дописано
+read_symb3: ; читает 3 символ введенный в цифровую панель
 	in 0x1d
 	and #0x40
 	beq read_symb3
@@ -140,7 +153,7 @@ read_symb3: ; читает 3 символ введенный в цифровую
 	cmp #0x0a
 	blt third_support
 	cmp #0x0b
-	beq sum
+	beq sum_support
 	cmp #0x0f
 	beq show_result_support
 
@@ -181,7 +194,8 @@ first:
 	ld $value
 	jump read_symb2 ; прыгаем на ввод второй цифры
 
-
+cont_second_minus_support:
+	jump $cont_second_minus
 second_minus:
 	ld $value
 	neg
@@ -189,7 +203,7 @@ second_minus:
 	st $value
 	ld #0x4a
 	out 0x14
-	jump cont_second_minus
+	jump cont_second_minus_support
 
 	
 
@@ -202,36 +216,64 @@ negative_result:
 	jump cont_negative_result
 loop1000_support:
 	jump $loop1000
+
 show_negative:
 	ld #0x4a
 	out 0x14
-	ld $num0
-	cmp #0x1
-	blt nlow_1000
-	add #0x30
-	out 0x14
-	nlow_1000:
-	ld $num1
-	cmp #0x1
-	blt nlow_100
-	add #0x20
-	out 0x14
-	nlow_100:
-	ld $num2
-	cmp #0x1
-	blt nlow_10
-	add #0x10
-	out 0x14
-	nlow_10:
+
+	ld $result
+	cmp $p1000
+	bge more_1000
+	cmp #0x64
+	bge more_100
+	cmp #0xa
+	bge more_10
 	ld $num3
 	out 0x14
 	hlt ; конец работы программы
+
+more_1000:
+	ld $num0
+	add #0x30
+	out 0x14
+	ld $num1
+	add #0x20
+	out 0x14
+	ld $num2
+	add #0x10
+	out 0x14
+	ld $num3
+	out 0x14
+	hlt
+
+more_100:
+	ld $num1
+	add #0x20
+	out 0x14
+	ld $num2
+	add #0x10
+	out 0x14
+	ld $num3
+	out 0x14
+	hlt
+more_10:
+	ld $num2
+	add #0x10
+	out 0x14
+	ld $num3
+	out 0x14
+	hlt
+
+
+
 loop100_support:
 	jump $loop100
 loop10_support:
 	jump $loop10
 show_result: ;показываем результат
+	
 	ld #0x4b
+	out 0x14
 	ld #0x0
 	st $num0
 	st $num1
@@ -294,24 +336,13 @@ show_result: ;показываем результат
 	cmp #0x1
 	beq show_negative
 
-	ld $num0
-	cmp #0x1
-	blt lower_1000
-	add #0x30
-	out 0x14
-	lower_1000:
-	ld $num1
-	cmp #0x1
-	blt lower_100
-	add #0x20
-	out 0x14
-	lower_100:
-	ld $num2
-	cmp #0x1
-	blt lower_10
-	add #0x10
-	out 0x14
-	lower_10:
+	ld $result
+	cmp $p1000
+	bge more_1000
+	cmp #0x64
+	bge more_100
+	cmp #0xa
+	bge more_10
 	ld $num3
 	out 0x14
 	hlt ; конец работы программы
@@ -325,6 +356,8 @@ sum:
 	ld #0x0
 	st $value
 	jump $clear_indicator	
+second_minus_support:
+	jump $second_minus
 second:
 	st $num2
 	ld #0x4b
@@ -347,7 +380,7 @@ second:
 		
 	ld $sign
 	cmp #0x1
-	beq second_minus ; переход, если число отрицательное
+	beq second_minus_support ; переход, если число отрицательное
 	
 	cont_second_minus:
 	ld $num1
