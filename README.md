@@ -29,17 +29,17 @@
 ├── 2 семестр
 │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming">Программирование</a>
 │   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab5">Лаба 5</a> <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab5/lab5.pdf">[отчет]</a>
-│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab6">Лаба 6 (еще не сдана)</a>
-│   │   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab7">Лаба 7 (еще не сдана)</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab6">Лаба 6 </a>
+│   │   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/Programming/lab7">Лаба 7 </a>
 │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity">Основы Профессиональной деятельности (ОПД)</a>
 │   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab3">Лаба 3</a> <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab3/lab3.pdf">[отчет] </a>
-│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab4">Лаба 4 (еще не сдана)</a>
-│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab5">Лаба 5 (еще не сдана)</a>
-│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab6">Лаба 6 (еще не сдана)</a>
-│   │   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab7">Лаба 7 (еще не сдана)</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab4">Лаба 4 </a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab5">Лаба 5 </a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab6">Лаба 6 </a>
+│   │   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/BasicsOfProfessionalActivity/lab7">Лаба 7 </a>
 │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases">Базы данных (БД)</a>
 │   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases/lab1">Лаба 1</a> 
-│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases/lab2">Лаба 2 (еще не сдана)</a>
-│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases/lab3">Лаба 3 (еще не сдана)</a>
-│   │   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases/lab4">Лаба 4 (еще не сдана)</a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases/lab2">Лаба 2 </a>
+│   │   ├── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases/lab3">Лаба 3 </a>
+│   │   └── <a href="https://github.com/Megadeth2006/ITMO_files/tree/main/DataBases/lab4">Лаба 4 </a>
 </pre>
