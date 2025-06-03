@@ -1,0 +1,13 @@
+// server/build.gradle
+
+dependencies {
+    implementation project(':common')  // Включаем зависимости из общего модуля
+}
+
+shadowJar {
+    archiveBaseName.set('client-server')
+    archiveClassifier.set('server')  // Устанавливаем классификатор для сервера
+    manifest {
+        attributes 'Main-Class': 'itmo.programming.server.Main'  // Главная точка входа
+    }
+}
