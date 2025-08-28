@@ -1,0 +1,5 @@
+info
+help
+print_ascending
+add
+execute_script file.txt

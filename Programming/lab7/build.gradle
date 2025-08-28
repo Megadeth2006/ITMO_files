@@ -1,0 +1,85 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+//java {
+//    toolchain {
+//        languageVersion = JavaLanguageVersion.of(17)
+//    }
+//}
+//
+//tasks.withType(JavaCompile).configureEach {
+//    options.release.set(17)
+//}
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.github.johnrengelman.shadow'
+    
+    group = 'itmo.programming'
+    version = '1.0-SNAPSHOT'
+    
+    repositories {
+        mavenCentral()
+    }
+    
+    dependencies {
+        implementation 'com.google.code.gson:gson:2.10.1'
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+        implementation 'org.postgresql:postgresql:42.7.3'
+    }
+}
+
+project(':common') {
+    dependencies {
+    }
+}
+
+project(':client') {
+    dependencies {
+        implementation project(':common')
+    }
+    
+    jar {
+        manifest {
+            attributes 'Main-Class': 'itmo.programming.client.Main'
+        }
+    }
+    
+    shadowJar {
+        archiveBaseName.set('client')
+        archiveClassifier.set('')
+        manifest {
+            attributes 'Main-Class': 'itmo.programming.client.Main'
+        }
+        mergeServiceFiles()
+    }
+}
+
+project(':server') {
+    dependencies {
+        implementation project(':common')
+    }
+    
+    jar {
+        manifest {
+            attributes 'Main-Class': 'itmo.programming.server.Main'
+        }
+    }
+    
+    shadowJar {
+        archiveBaseName.set('server')
+        archiveClassifier.set('')
+        manifest {
+            attributes 'Main-Class': 'itmo.programming.server.Main'
+        }
+        mergeServiceFiles()
+    }
+}
+
+
+
+test {
+    useJUnitPlatform()
+} 

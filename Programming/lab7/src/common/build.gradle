@@ -1,0 +1,11 @@
+// common/build.gradle
+
+dependencies {
+
+}
+
+jar {
+
+    archiveBaseName.set('common')
+    archiveVersion.set('1.0-SNAPSHOT')
+}

@@ -1,0 +1,14 @@
+// client/build.gradle
+
+dependencies {
+    implementation project(':common')
+}
+
+shadowJar {
+    archiveBaseName.set('client-server')
+    archiveClassifier.set('client')  // Устанавливаем классификатор для клиента
+    manifest {
+        attributes 'Main-Class': 'itmo.programming.client.Main'  // Главная точка входа
+    }
+    mergeServiceFiles()  // Если нужно объединить сервисные файлы
+}
